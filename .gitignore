@@ -1,0 +1,6 @@
+# Raster data
+*.tif
+*.tiff
+
+# GDAL auxiliary files
+*.aux.xml
