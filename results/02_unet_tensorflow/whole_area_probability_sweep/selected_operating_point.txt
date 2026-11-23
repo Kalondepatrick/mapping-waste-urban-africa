@@ -1,0 +1,9 @@
+Probability raster: C:\Users\Peter\Documents\GitHub\mapping-waste-urban-africa\outputs\waste_probability_full_seamfree.tif
+Reference file: C:\Users\Peter\Documents\GitHub\mapping-waste-urban-africa\data\waste\waste_outlines.geojson
+Threshold: 0.90
+Minimum area: 2.00 m2
+Predicted objects: 51
+Reference units detected: 0/116
+Precision: 0.000000
+Recall: 0.000000
+F1: 0.000000

@@ -1,0 +1,2 @@
+Experiment,Waste_Raw_Raster_Label,Waste_Model_Channel,Optimal_Threshold,Precision,Recall,F1_Score,IoU,Average_Precision
+filters_16,1,0,0.383,0.8063,0.8178,0.812,0.6835,0.8829

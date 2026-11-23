@@ -1,0 +1,2 @@
+model,threshold,min_object_area_m2,connectivity,reference_units,predicted_objects,matched_reference_units,unmatched_predicted_objects,missed_reference_units,precision,recall,f1,predicted_object_area_m2,reference_vector_area_m2,object_area_ratio_pred_ref
+selective_error_correction,0.5,0.25,8,37,1548,30,1518,7,0.01937984496124031,0.8108108108108109,0.037854889589905356,4476.601500310593,936.3316807212059,4.780999716748352

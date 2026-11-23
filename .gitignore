@@ -3,4 +3,64 @@
 *.tiff
 
 # GDAL auxiliary files
+*.png 
 *.aux.xml
+.Rproj.user
+
+# Local OpenEarthMap environment and downloaded model weights
+.venv-openearthmap/
+data/pretrained_weights/openearthmap/*.pth
+
+# R workspace and temporary files
+.RData*
+.Rhistory
+.Rproj.user/
+
+# Python virtual environments
+.venv-openearthmap/
+.venv/
+__pycache__/
+
+# Trained deep-learning models
+*.keras
+*.h5
+*.pt
+*.pth
+
+# Generated waste mapping datasets
+/data/annotations/waste_review_app/exports/
+/data/annotations/waste_review_app/data/months/
+/data/annotations/waste_review_app/review_log.sqlite*
+/data/predictions/waste_piles_vector/
+/results/02_unet_tensorflow/shiny_waste_review/*.gpkg
+
+# Python virtual environments (additional)
+.venv-torch/
+.venv*/
+
+# Editor / IDE
+.vscode/
+
+# Zenodo staging trees built by tools/make_zenodo_package.py
+/zenodo_package/
+/zenodo_*/
+
+# ---------------------------------------------------------------------------
+# Dataset: deposited on Zenodo, not version controlled.
+# The files stay on disk; see data/README.md and tools/make_zenodo_package.py
+# ---------------------------------------------------------------------------
+data/
+
+# Large derived geospatial outputs under results/.
+# Regenerate with 04_inference/ and 05_hard_negatives/, or take them from the
+# Zenodo deposit. Metrics, tables and figures ARE tracked.
+results/**/*.shp
+results/**/*.shx
+results/**/*.dbf
+results/**/*.prj
+results/**/*.qix
+results/**/*.cpg
+results/**/*.gpkg
+results/**/*.zip
+results/**/*.rds
+results/**/*.ipynb

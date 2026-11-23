@@ -1,0 +1,15 @@
+{
+  "arch": "geobia-oracle-rf",
+  "segments": "oracle",
+  "classifier": "rf",
+  "seeds": [1, 2, 3],
+  "waste_label": 1,
+  "ignore_label": 99,
+  "n_features": 31,
+  "ntree": 300,
+  "split_source": "results/03_unet_pytorch/unet_f16_clean/seed_1/split.csv",
+  "clean_test": "results/03_unet_pytorch/test_tiles_clean.csv",
+  "basis": "pixel level, pooled over tiles, label 99 excluded",
+  "segmentation": "polygons vectorised from the reference mask: ORACLE upper bound, not a method",
+  "note": "Comparable with results/0{3,4,5,6}_*: same partition, split and metrics"
+}

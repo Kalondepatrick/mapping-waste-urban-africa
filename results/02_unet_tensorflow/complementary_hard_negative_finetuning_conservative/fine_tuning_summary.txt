@@ -1,0 +1,25 @@
+CONSERVATIVE COMPLEMENTARY HARD-NEGATIVE FINE-TUNING
+============================================================================
+
+Starting model:
+C:\Users\Peter\Documents\GitHub\mapping-waste-urban-africa\models\filters_16_march_finetuned_best.keras
+
+Output model:
+C:\Users\Peter\Documents\GitHub\mapping-waste-urban-africa\models\filters_16_complementary_conservative_finetuned.keras
+
+Negative-loss weight: 0.2
+Stage-1 negative objects / training epoch: 100
+Stage-2 negative objects / training epoch: 100
+
+Original training replay records: 616
+Original fixed validation records: 68
+Stage-1 validation negative objects: 100
+Stage-2 validation negative objects: 100
+
+Epochs completed: 49
+Best validation epoch: 35
+Best validation loss: 0.30492291
+Training loss at best validation epoch: 0.30084571
+
+Model selection criterion: fixed internal validation loss
+Independent test area: not used during this fine-tuning run

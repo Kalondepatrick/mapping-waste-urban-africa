@@ -1,0 +1,83 @@
+Device: NVIDIA GeForce RTX 4090 Laptop GPU  (torch 2.11.0+cu128)
+Labels [1, 2, 3, 4, 5, 6, 7, 8, 9] -> channels 0..8; waste label 1 -> channel 0
+  Loaded 804 tiles from dev: data\tiled_data\partitioned\modelDevelopment
+    ignored pixels (label 99): 15,593 (0.03%)
+  Loaded 222 tiles from test: data\tiled_data\partitioned\Validation
+    ignored pixels (label 99): 3,923 (0.03%)
+  Loaded 66 tiles from extra: data\tiled_data\finetuning_hard_negatives_complete
+    ignored pixels (label 99): 0 (0.00%)
+  Loaded 2000 tiles from neg: data\tiled_data\complementary_hard_negatives_v2
+    not-waste pixels: 8,466,539 (6.46%); rest ignored
+
+==================== seed 1 ====================
+  Spatial split: 35 blocks, 5 to val (165 tiles), 639 tiles to train
+  dinov2: 22.62 M parameters (22.62 M trainable)
+  epoch   0  train 0.8818  val 0.7908  *  [0.8 min]
+  epoch   1  train 0.6217  val 0.6154  *  [1.1 min]
+  epoch   3  train 0.5272  val 0.6096  *  [1.7 min]
+  epoch   5  train 0.4727  val 0.5462  *  [2.4 min]
+  epoch   6  train 0.4729  val 0.4700  *  [2.7 min]
+  epoch   7  train 0.4541  val 0.4345  *  [3.0 min]
+  Epoch 10: encoder unfrozen, lr -> 0.0001
+  epoch  10  train 0.7985  val 0.8997  [4.2 min]
+  epoch  15  train 0.6803  val 0.6570  [7.0 min]
+  epoch  20  train 0.6034  val 0.6185  [9.7 min]
+  epoch  25  train 0.5755  val 0.6909  [12.5 min]
+  Early stopping at epoch 27 (best val_loss 0.4345)
+  Threshold chosen on val: t* = 0.1548
+split   rule  prevalence  precision   recall       f1      iou      fpr
+  val argmax    0.054193   0.867882 0.310865 0.457765 0.296819 0.002712
+  val thresh    0.054193   0.652662 0.483971 0.555799 0.384848 0.014758
+ test argmax    0.033015   0.900076 0.299416 0.449353 0.289784 0.001135
+ test thresh    0.033015   0.705200 0.446394 0.546716 0.376193 0.006371
+
+==================== seed 2 ====================
+  Spatial split: 35 blocks, 5 to val (165 tiles), 639 tiles to train
+  dinov2: 22.62 M parameters (22.62 M trainable)
+  epoch   0  train 0.8178  val 0.7455  *  [0.3 min]
+  epoch   1  train 0.6309  val 0.5890  *  [0.7 min]
+  epoch   3  train 0.5453  val 0.5574  *  [1.4 min]
+  epoch   4  train 0.5142  val 0.5376  *  [1.7 min]
+  epoch   5  train 0.4966  val 0.4841  *  [2.1 min]
+  epoch   8  train 0.4656  val 0.4286  *  [3.2 min]
+  Epoch 10: encoder unfrozen, lr -> 0.0001
+  epoch  10  train 0.9472  val 0.8104  [4.1 min]
+  epoch  15  train 0.6239  val 0.7486  [6.9 min]
+  epoch  20  train 0.6082  val 0.7321  [9.8 min]
+  epoch  25  train 0.5965  val 0.6285  [12.6 min]
+  Early stopping at epoch 28 (best val_loss 0.4286)
+  Threshold chosen on val: t* = 0.2397
+split   rule  prevalence  precision   recall       f1      iou      fpr
+  val argmax    0.054193   0.754768 0.527699 0.621131 0.450465 0.009824
+  val thresh    0.054193   0.621346 0.624866 0.623101 0.452539 0.021819
+ test argmax    0.033015   0.835874 0.403633 0.544388 0.373993 0.002706
+ test thresh    0.033015   0.693322 0.505782 0.584886 0.413314 0.007638
+
+==================== seed 3 ====================
+  Spatial split: 35 blocks, 5 to val (165 tiles), 639 tiles to train
+  dinov2: 22.62 M parameters (22.62 M trainable)
+  epoch   0  train 0.9057  val 0.7524  *  [0.3 min]
+  epoch   1  train 0.6450  val 0.5933  *  [0.7 min]
+  epoch   3  train 0.5467  val 0.5660  *  [1.4 min]
+  epoch   4  train 0.5132  val 0.5121  *  [1.7 min]
+  epoch   5  train 0.4954  val 0.4344  *  [2.1 min]
+  Epoch 10: encoder unfrozen, lr -> 0.0001
+  epoch  10  train 0.8790  val 0.8181  [4.1 min]
+  epoch  15  train 0.6949  val 0.6742  [7.0 min]
+  epoch  20  train 0.6060  val 0.6413  [9.8 min]
+  epoch  25  train 0.6027  val 0.5875  [12.7 min]
+  Early stopping at epoch 25 (best val_loss 0.4344)
+  Threshold chosen on val: t* = 0.2489
+split   rule  prevalence  precision   recall       f1      iou      fpr
+  val argmax    0.054193   0.780808 0.553618 0.647874 0.479152 0.008905
+  val thresh    0.054193   0.692370 0.658270 0.674890 0.509308 0.016759
+ test argmax    0.033015   0.754214 0.579813 0.655614 0.487668 0.006451
+ test thresh    0.033015   0.662056 0.667154 0.664595 0.497673 0.011627
+
+=========== Summary across seeds (mean) ===========
+              prevalence  precision    recall        f1       iou       fpr
+split rule                                                                 
+test  argmax    0.033015   0.830055  0.427621  0.549785  0.383815  0.003431
+      thresh    0.033015   0.686859  0.539777  0.598732  0.429060  0.008545
+val   argmax    0.054193   0.801153  0.464061  0.575590  0.408812  0.007147
+      thresh    0.054193   0.655459  0.589036  0.617930  0.448899  0.017779

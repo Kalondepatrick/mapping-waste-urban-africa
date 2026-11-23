@@ -1,0 +1,3 @@
+--- Final Validation Metrics ---
+loss: 0.2652
+compile_metrics: 0.9062

@@ -1,0 +1,11 @@
+raw_label,model_channel,class_name
+1,0,Waste
+2,1,Soil
+3,2,Vegetation
+4,3,Built-up surface
+5,4,Built-up surface (paved area)
+6,5,Water Body
+7,6,Natural Surface - rocks
+8,7,Non-persistent object
+9,8,Ancillary class
+10,9,Unidentified

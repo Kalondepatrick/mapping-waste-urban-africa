@@ -1,0 +1,33 @@
+HARD-NEGATIVE FINE-TUNED U-NET
+INDEPENDENT TEST ACCURACY
+======================================================================
+
+Model: C:\Users\Peter\Documents\GitHub\mapping-waste-urban-africa\models\filters_16_hardnegative_finetuned.keras
+Test image-mask pairs: 222
+
+PRIMARY EVALUATION
+Multiclass ARGMAX; raw class 1 = waste
+----------------------------------------------------------------------
+TP: 297095
+FP: 114479
+FN: 183106
+TN: 13954312
+
+Accuracy : 0.979546
+Precision: 0.721851
+Recall   : 0.618689
+F1       : 0.666300
+IoU      : 0.499588
+
+SECONDARY EVALUATION
+Fixed waste probability threshold = 0.50
+----------------------------------------------------------------------
+Precision: 0.790342
+Recall   : 0.528752
+F1       : 0.633609
+IoU      : 0.463710
+
+REFERENCE MASK AUDIT
+----------------------------------------------------------------------
+Masks containing values outside 1-10: 44
+Total pixels outside 1-10: 3923

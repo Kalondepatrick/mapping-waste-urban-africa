@@ -1,0 +1,17 @@
+This is bootstrapExample.R
+
+Input parameters:
+	B = < NA >,
+	var = < NA >,
+	outPrefix = < NA >.
+
+Starting the bootstrap iterations.
+Done.
+
+Computing the CI.
+Done.
+
+Writing the output.
+Done.
+
+This is the end.

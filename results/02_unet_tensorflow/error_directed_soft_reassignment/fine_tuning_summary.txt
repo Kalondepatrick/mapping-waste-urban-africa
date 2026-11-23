@@ -1,0 +1,30 @@
+ERROR-DIRECTED SOFT-REASSIGNMENT FINE-TUNING
+========================================================================
+
+Original teacher/student model:
+C:\Users\Peter\Documents\GitHub\mapping-waste-urban-africa\models\filters_16_march_finetuned_best.keras
+
+Final restored-best student:
+C:\Users\Peter\Documents\GitHub\mapping-waste-urban-africa\models\filters_16_error_directed_soft_reassignment_finetuned.keras
+
+Best checkpoint:
+C:\Users\Peter\Documents\GitHub\mapping-waste-urban-africa\models\filters_16_error_directed_soft_reassignment_best.keras
+
+Loss design:
+  Original labels -> 10-class categorical cross-entropy
+  Confirmed false positives -> -log(1-P_student(Waste))
+  Teacher waste errors -> soft redistribution across the other nine classes
+
+Teacher P(Waste) trigger: 0.5
+Negative loss weight: 1.0
+Redistribution loss weight: 0.5
+
+Epochs completed: 123
+Best validation epoch: 98
+Best validation loss: 0.54416454
+
+Hard-negative coverage through best epoch:
+  stage1_rejected: 19677 / 19677 (100.00%)
+  stage2_not_waste: 3428 / 3428 (100.00%)
+
+The locked independent test AOI was not used for training, validation, checkpointing, or early stopping.

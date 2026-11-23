@@ -1,0 +1,38 @@
+WASTE PILE DATA AUDIT SUMMARY
+============================================================
+
+Model: ./results\filters_16_best.keras
+Image directory: C:\Users\Peter\Documents\GitHub\mapping-waste-urban-africa\data\tiled_data\partitioned\modelDevelopment\images
+Mask directory: C:\Users\Peter\Documents\GitHub\mapping-waste-urban-africa\data\tiled_data\partitioned\modelDevelopment\masks
+
+Historical train/validation split:
+The original random split cannot be reconstructed because the original script did not save the split and did not fix a random seed. This audit therefore evaluates all matching pairs, which covers both the original training and validation data.
+
+Matching image-mask pairs: 804
+Images without masks: 0
+Masks without images: 0
+Files with basic audit flags: 120
+
+Detected raw labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 99]
+Expected raw labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+Waste raw label: 1
+Waste model channel: 0
+
+Waste threshold: 0.3830
+Threshold source: ./results\filters_16_waste_metrics.csv
+
+Ground-truth waste piles/components: 647
+Piles with mean P(waste) < 0.30: 216
+Piles with recall < 0.30: 212
+Piles with waste-minus-competitor margin < -0.20: 218
+
+Possible missing waste annotation candidates (P(waste) >= 0.90, component >= 10 pixels): 311
+
+OUTPUTS
+------------------------------------------------------------
+./results\waste_pile_data_audit\waste_pile_diagnostics.csv
+./results\waste_pile_data_audit\possible_missing_waste_annotations.csv
+./results\waste_pile_data_audit\image_mask_data_audit.csv
+./results\waste_pile_data_audit\waste_pile_confusion_summary.csv
+./results\waste_pile_data_audit\difficult_labelled_piles
+./results\waste_pile_data_audit\possible_missing_waste_labels

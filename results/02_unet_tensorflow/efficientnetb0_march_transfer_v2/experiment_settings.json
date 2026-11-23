@@ -1,0 +1,38 @@
+{
+  "encoder": "EfficientNetB0",
+  "encoder_weights": "imagenet",
+  "input_range": [
+    0,
+    1
+  ],
+  "internal_encoder_input_range": [
+    0,
+    255
+  ],
+  "labels_raw_to_output_index": {
+    "1": 0,
+    "2": 1,
+    "3": 2,
+    "4": 3,
+    "5": 4,
+    "6": 5,
+    "7": 6,
+    "8": 7,
+    "9": 8,
+    "10": 9
+  },
+  "waste_class_index": 0,
+  "seed": 42,
+  "ignored_raw_labels_excluded_per_tile": [
+    99
+  ],
+  "old_masks_excluded": 120,
+  "new_train_unique": 3,
+  "new_validation_unique": 1,
+  "old_replay_unique": 100,
+  "old_monitor_unique": 50,
+  "stage1_best_val_loss": 0.31218910217285156,
+  "stage2_best_val_loss": 0.2937209904193878,
+  "selected_checkpoint": "efficientnetb0_unet_stage2_best.keras",
+  "old_monitor_is_independent_test": false
+}

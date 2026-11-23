@@ -1,0 +1,36 @@
+SELECTIVE ERROR-CORRECTION FINE-TUNING
+========================================================================
+
+Original baseline / teacher:
+C:\Users\Peter\Documents\GitHub\mapping-waste-urban-africa\models\filters_16_march_finetuned_best.keras
+
+Selected final model:
+C:\Users\Peter\Documents\GitHub\mapping-waste-urban-africa\models\filters_16_selective_error_correction_finetuned.keras
+
+Selected checkpoint:
+C:\Users\Peter\Documents\GitHub\mapping-waste-urban-africa\models\filters_16_selective_error_correction_best.keras
+
+Training logic:
+  1. Original labelled pixels -> 10-class categorical cross-entropy
+  2. Original labelled Waste pixels -> explicit Waste-preservation loss
+  3. Reviewed non-waste pixels -> correction only where the frozen baseline predicted Waste/high Waste probability
+  4. Negative correction strength -> P_teacher(Waste)^ERROR_POWER
+  5. No alternative non-waste class is imposed
+
+Teacher Waste-probability trigger: 0.5
+Teacher error-power: 2.0
+Positive-preservation loss weight: 1.0
+Selective-negative loss weight: 0.5
+Maximum allowed validation genuine-Waste recall drop: 0.02
+
+Epochs completed: 58
+Selected fine-tuned epoch: 33
+Selected validation loss: 0.3262469172477722
+
+Selection status: fine-tuned model accepted under the positive-preservation checkpoint rule.
+
+Hard-negative coverage through selected epoch:
+  stage1_rejected: 9900 / 19677 (50.31%)
+  stage2_not_waste: 3428 / 3428 (100.00%)
+
+The locked independent test AOI was not used for training, validation, checkpointing, or early stopping.

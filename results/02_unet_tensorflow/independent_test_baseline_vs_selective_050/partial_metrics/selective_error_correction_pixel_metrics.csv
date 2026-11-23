@@ -1,0 +1,2 @@
+model,threshold,tp_pixels,fp_pixels,fn_pixels,tn_pixels,precision,recall,f1,iou,accuracy,predicted_positive_pixels,predicted_pixel_area_m2,reference_pixel_area_m2,pixel_area_ratio_pred_ref
+selective_error_correction,0.5,499523,2919837,145193,280457207,0.1460866945861214,0.774795413794601,0.24582365093566166,0.14013622465425538,0.9892084676892362,3419360,4966.183063856001,936.3675308236003,5.303668592062241

@@ -1,0 +1,127 @@
+{
+  "version": 4,
+  "original": {
+    "path": "C:\\Users\\Peter\\Documents\\GitHub\\mapping-waste-urban-africa\\outputs\\waste_probability_full.tif",
+    "bytes": 25733359663,
+    "modified_ns": 1788479823034527800,
+    "width": 96929,
+    "height": 111817,
+    "crs": "COMPD_CS[\"WGS 84 / UTM zone 36S + EGM96 height\",PROJCS[\"WGS 84 / UTM zone 36S\",GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4326\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",33],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",10000000],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH],AUTHORITY[\"EPSG\",\"32736\"]],VERT_CS[\"EGM96 height\",VERT_DATUM[\"EGM96 geoid\",2005,AUTHORITY[\"EPSG\",\"5171\"]],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Gravity-related height\",UP],AUTHORITY[\"EPSG\",\"5773\"]]]",
+    "transform": [
+      0.038110000000000005,
+      0.0,
+      716594.27618,
+      0.0,
+      -0.038110000000000005,
+      8257709.51965,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "nodata": -1.0,
+    "tags": {
+      "AREA_OR_POINT": "Area"
+    }
+  },
+  "refined": {
+    "path": "C:\\Users\\Peter\\Documents\\GitHub\\mapping-waste-urban-africa\\results\\test_area_finetuned\\testarea_waste_probability11.tif",
+    "bytes": 1004980963,
+    "modified_ns": 1788731757246314900,
+    "width": 19840,
+    "height": 14592,
+    "crs": "COMPD_CS[\"WGS 84 / UTM zone 36S + EGM96 height\",PROJCS[\"WGS 84 / UTM zone 36S\",GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4326\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",33],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",10000000],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH],AUTHORITY[\"EPSG\",\"32736\"]],VERT_CS[\"EGM96 height\",VERT_DATUM[\"EGM96 geoid\",2005,AUTHORITY[\"EPSG\",\"5171\"]],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Gravity-related height\",UP],AUTHORITY[\"EPSG\",\"5773\"]]]",
+    "transform": [
+      0.038110000000000005,
+      0.0,
+      718682.0944200001,
+      0.0,
+      -0.038110000000000005,
+      8255802.19037,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "nodata": -9999.0,
+    "tags": {
+      "probability_range": "0-1",
+      "target_class": "Waste",
+      "waste_model_channel": "0",
+      "waste_raw_label": "1",
+      "AREA_OR_POINT": "Area"
+    }
+  },
+  "reference": {
+    "path": "C:\\Users\\Peter\\Documents\\GitHub\\mapping-waste-urban-africa\\05_finetuning\\step0\\waste.shp",
+    "source_features": 39,
+    "source_crs": "EPSG:32736",
+    "source_fingerprint": "23074454f785f40d3081b20d40ef1d4cef3df4f04b6051dbaef4a1a02b189210",
+    "files": {
+      "waste.shp": {
+        "sha256": "96ff6db0538e7308c9214c0db195f35ee3a19e2fe0ae17d5d3d955f792f880e0",
+        "bytes": 24384,
+        "modified_ns": 1788787997265918000
+      },
+      "waste.shx": {
+        "sha256": "b12b90efc618be03232a52cd29860ab12546ecc955586e2c6a4097e4ee19a318",
+        "bytes": 412,
+        "modified_ns": 1788787997265918000
+      },
+      "waste.dbf": {
+        "sha256": "46cd1883b1010f8088e9b003c53b1fa0c613022cd502fc438d3286aacc4333f6",
+        "bytes": 917,
+        "modified_ns": 1788787997287968400
+      },
+      "waste.prj": {
+        "sha256": "acb0903b0eb2f71337bf730a1d5438b8fbef4da5f222f8290587298390a7662a",
+        "bytes": 408,
+        "modified_ns": 1788521606847653400
+      },
+      "waste.cpg": {
+        "sha256": "3ad3031f5503a4404af825262ee8232cc04d4ea6683d42c5dd0a2f2a27ac9824",
+        "bytes": 5,
+        "modified_ns": 1788521606847653400
+      }
+    }
+  },
+  "test_area": {
+    "path": "C:\\Users\\Peter\\Documents\\GitHub\\mapping-waste-urban-africa\\data\\aoi\\testarea.shp",
+    "bytes": 1004,
+    "modified_ns": 1788600824387020300,
+    "sidecar_sha256": {
+      ".shp": "2e9ba7841875b28cb843739f7bdeac991f33d17ba6dcae531cc14f43aa0178a5",
+      ".shx": "c669a5554dbb3bf66d1b70c58abc2896966aadefee833d1d37f8cf26fbee4889",
+      ".dbf": "87e11ba2153f8a1b5c4b3c518896768a565cf59feb85f91c73e0d5d565242460",
+      ".prj": "b4e9d90fd023d97e293eb93e890721faada832dee1c3dd74d011d540a1ab1c52",
+      ".cpg": "3ad3031f5503a4404af825262ee8232cc04d4ea6683d42c5dd0a2f2a27ac9824"
+    }
+  },
+  "reference_complete": true,
+  "thresholds": [
+    0.05,
+    0.1,
+    0.15,
+    0.2,
+    0.25,
+    0.3,
+    0.35,
+    0.4,
+    0.45,
+    0.5,
+    0.55,
+    0.6,
+    0.65,
+    0.7,
+    0.75,
+    0.8,
+    0.85,
+    0.9,
+    0.95
+  ],
+  "minimum_object_area_m2": 0.25,
+  "minimum_reference_coverage": 0.01,
+  "connectivity": 8,
+  "strip_rows": 512,
+  "pixel_reference": "None",
+  "reference_matching_area": "rasterized reference area (pixel-centre rule)",
+  "notes": "Exploratory paired spatial comparison. Source reference is snapshotted. No model training or inference. Test area previously informed error discovery; diagnostic threshold choices are not independently validated. Original and refined source inference procedures may differ."
+}

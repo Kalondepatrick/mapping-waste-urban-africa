@@ -1,0 +1,40 @@
+ROTATING COMPLEMENTARY HARD-NEGATIVE U-NET FINE-TUNING
+============================================================================
+
+Starting model:
+C:\Users\Peter\Documents\GitHub\mapping-waste-urban-africa\models\filters_16_march_finetuned_best.keras
+
+Output model:
+C:\Users\Peter\Documents\GitHub\mapping-waste-urban-africa\models\filters_16_complementary_rotating_finetuned.keras
+
+TRAINING DATA
+----------------------------------------------------------------------------
+Clean original replay pairs / epoch: 684
+Hard-negative library chips: 26597
+Stage-1 negative objects / epoch: 300
+Stage-2 negative objects / epoch: 200
+Total records / epoch: 1184
+
+LOSS
+----------------------------------------------------------------------------
+Original replay pixels: ordinary 10-class categorical cross-entropy.
+Complementary pixels: -log(1 - P(waste)).
+Alternative non-waste class is not specified.
+Negative-loss weight: 1.0
+
+TRAINING RESULT
+----------------------------------------------------------------------------
+Epochs completed: 48
+Lowest training-loss epoch: 18
+Lowest training loss: 0.36124986
+Final learning rate: 1.25e-06
+
+HARD-NEGATIVE OBJECT COVERAGE
+----------------------------------------------------------------------------
+stage1_rejected: 14400 / 19827 (72.63%)
+stage2_not_waste: 3528 / 3528 (100.00%)
+
+VALIDATION
+----------------------------------------------------------------------------
+No independent test data were used during fine-tuning.
+The next step is to compare the starting and fine-tuned models on the same locked independent test area.

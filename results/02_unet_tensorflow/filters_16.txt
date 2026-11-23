@@ -1,0 +1,6 @@
+--- Calibrated Evaluation Results: filters_16 ---
+Optimal Probability Threshold : 0.3255
+Precision @ Optimal Threshold : 0.7785
+Recall @ Optimal Threshold    : 0.8252
+F1 Score @ Optimal Threshold  : 0.8012
+IoU @ Optimal Threshold       : 0.6683

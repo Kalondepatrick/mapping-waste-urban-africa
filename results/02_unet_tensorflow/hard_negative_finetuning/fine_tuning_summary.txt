@@ -1,0 +1,41 @@
+HARD-NEGATIVE U-NET FINE-TUNING SUMMARY
+===========================================================================
+
+Starting model:
+C:\Users\Peter\Documents\GitHub\mapping-waste-urban-africa\models\filters_16_march_finetuned_best.keras
+
+Output model:
+C:\Users\Peter\Documents\GitHub\mapping-waste-urban-africa\models\filters_16_hardnegative_finetuned.keras
+
+TRAINING DATA
+---------------------------------------------------------------------------
+Original matching pairs examined: 804
+Clean original replay pairs: 684
+Excluded incompatible original masks: 120
+Unique new hard-negative pairs: 66
+Hard-negative source areas represented: 16
+Hard-negative repeat factor: 3
+Effective hard-negative records per epoch: 198
+Effective total records per epoch: 882
+
+TRAINING SETTINGS
+---------------------------------------------------------------------------
+Batch size: 8
+Initial learning rate: 1e-05
+Minimum learning rate: 1e-07
+Maximum epochs: 500
+Reduce LR patience: 10
+Early stopping patience: 30
+Minimum loss improvement: 0.0001
+
+RESULT
+---------------------------------------------------------------------------
+Epochs completed: 186
+Lowest training-loss epoch: 156
+Lowest training loss: 0.37917173
+Final learning rate: 1.0000000116860974e-07
+
+VALIDATION
+---------------------------------------------------------------------------
+No validation or test data were used during fine-tuning.
+Generalization performance will subsequently be evaluated using the separately defined test area.

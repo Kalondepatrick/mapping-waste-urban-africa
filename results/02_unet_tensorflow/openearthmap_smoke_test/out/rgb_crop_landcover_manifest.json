@@ -1,0 +1,40 @@
+{
+  "input": "C:\\Users\\Peter\\Documents\\GitHub\\mapping-waste-urban-africa\\results\\openearthmap_smoke_test\\rgb_crop.tif",
+  "checkpoint": "C:\\Users\\Peter\\Documents\\GitHub\\mapping-waste-urban-africa\\models\\openearthmap\\RGB_Real_5_u-efficientnet-b4.pth",
+  "model": "OpenEarthMap-SAR optical U-Net EfficientNet-B4",
+  "class_names": {
+    "0": "background",
+    "1": "bareland",
+    "2": "grass_rangeland",
+    "3": "pavement_developed_space",
+    "4": "road",
+    "5": "tree",
+    "6": "water",
+    "7": "cropland",
+    "8": "building"
+  },
+  "vegetation_channels": [
+    2,
+    5,
+    7
+  ],
+  "developed_surface_channels": [
+    3,
+    4
+  ],
+  "building_channel": 8,
+  "probability_storage": {
+    "dtype": "uint16",
+    "scale": 0.0001,
+    "nodata": 65535
+  },
+  "tile_size": 512,
+  "halo": 64,
+  "input_scale": 255.0,
+  "outputs": {
+    "landcover": "C:\\Users\\Peter\\Documents\\GitHub\\mapping-waste-urban-africa\\results\\openearthmap_smoke_test\\out\\rgb_crop_landcover.tif",
+    "building": "C:\\Users\\Peter\\Documents\\GitHub\\mapping-waste-urban-africa\\results\\openearthmap_smoke_test\\out\\rgb_crop_building_probability.tif",
+    "vegetation": "C:\\Users\\Peter\\Documents\\GitHub\\mapping-waste-urban-africa\\results\\openearthmap_smoke_test\\out\\rgb_crop_vegetation_probability.tif",
+    "developed": "C:\\Users\\Peter\\Documents\\GitHub\\mapping-waste-urban-africa\\results\\openearthmap_smoke_test\\out\\rgb_crop_developed_surface_probability.tif"
+  }
+}

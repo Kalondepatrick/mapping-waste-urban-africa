@@ -1,0 +1,18 @@
+# TensorFlow stack — 02_unet_tensorflow/, 04_inference/, 05_hard_negatives/
+#
+# TensorFlow has had no native Windows GPU support since 2.10. The published
+# baseline was trained on Linux/WSL2. On Windows these scripts run on CPU only.
+tensorflow==2.10.1 ; sys_platform == "win32"
+tensorflow==2.16.1 ; sys_platform != "win32"
+
+numpy
+scipy
+pandas
+scikit-learn
+matplotlib
+rasterio
+geopandas
+shapely
+fiona
+pillow
+tqdm

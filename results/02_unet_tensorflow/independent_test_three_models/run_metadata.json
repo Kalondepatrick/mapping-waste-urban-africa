@@ -1,0 +1,31 @@
+{
+  "seed": 20260919,
+  "orthomosaic": "C:\\Users\\Peter\\Documents\\GitHub\\mapping-waste-urban-africa\\data\\optical.tiff",
+  "test_aoi": "C:\\Users\\Peter\\Documents\\GitHub\\waste_spatio_temporal\\inputs\\finetuning\\AOI\\AOI.shp",
+  "reference_waste": "C:\\Users\\Peter\\Documents\\GitHub\\mapping-waste-urban-africa\\05_finetuning\\step0\\waste.shp",
+  "baseline_model": "C:\\Users\\Peter\\Documents\\GitHub\\mapping-waste-urban-africa\\models\\filters_16_march_finetuned_best.keras",
+  "baseline_model_sha256": "41d17ef116812928869fa68b5f4579ef6887fd28069fa2ea7eb3302f97c180cf",
+  "complementary_model": "C:\\Users\\Peter\\Documents\\GitHub\\mapping-waste-urban-africa\\models\\filters_16_complementary_rotating_finetuned.keras",
+  "complementary_model_sha256": "216d70a015c2ee7edbf78548a19f8620570a46814de0662cff7e66e49984f613",
+  "error_directed_model": "C:\\Users\\Peter\\Documents\\GitHub\\mapping-waste-urban-africa\\models\\filters_16_error_directed_soft_reassignment_finetuned.keras",
+  "error_directed_model_sha256": "f799c86a8d624c61cc76e453538f9e1b9817f9314fb656b86d5e738173b4f7fb",
+  "model_tile": 256,
+  "retained_core": 128,
+  "halo": 64,
+  "waste_class_index": 0,
+  "primary_threshold": 0.5,
+  "descriptive_thresholds": [
+    0.5
+  ],
+  "minimum_mapping_unit_m2": 0.25,
+  "connectivity": 8,
+  "minimum_reference_coverage_for_match": 0.01,
+  "reference_source_features": 36,
+  "reference_contiguous_units": 37,
+  "reference_vector_area_m2": 936.3316807212059,
+  "reference_raster_area_m2": 936.3675308236003,
+  "test_width_pixels": 19681,
+  "test_height_pixels": 14433,
+  "test_aoi_pixels": 284021760,
+  "pixel_area_m2": 0.0014523721000000004
+}

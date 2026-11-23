@@ -1,0 +1,10 @@
+efficientnet-b4-imagenet finetuned
+efficientnet-b4-imagenet frozen
+efficientnet-b4-oem finetuned
+efficientnet-b4-oem frozen
+dinov3-sat-vitl finetuned
+dinov3-sat-vitl frozen
+dinov3-vitl finetuned
+dinov3-vitl frozen
+satlas-aerial finetuned
+satlas-aerial frozen

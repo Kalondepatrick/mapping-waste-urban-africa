@@ -1,0 +1,4 @@
+evaluation,model,test_tiles,decision_rule,TP,FP,FN,TN,Accuracy,Precision,Recall,F1,IoU
+Multiclass_argmax_primary,filters_16_hardnegative_finetuned.keras,222,argmax_class_equals_raw_class_1,297095,114479,183106,13954312,0.9795460056614231,0.721850748589561,0.6186888407146174,0.66630035603151,0.49958801372166545
+Waste_probability_fixed_0.50_secondary,filters_16_hardnegative_finetuned.keras,222,waste_probability_ge_0.50,253907,67355,226294,14001436,0.9798165398675043,0.7903424619158195,0.5287515019752146,0.6336087879290747,0.46370964796294806
+Multiclass_argmax_valid_labels_1_to_10_only,filters_16_hardnegative_finetuned.keras,222,argmax_class_1_valid_reference_labels_only,297095,114425,183106,13950443,0.9795442015434922,0.7219454704510109,0.6186888407146174,0.6663407052205791,0.499633383000407

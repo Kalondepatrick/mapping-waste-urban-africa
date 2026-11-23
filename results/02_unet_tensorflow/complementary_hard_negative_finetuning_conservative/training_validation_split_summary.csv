@@ -1,0 +1,7 @@
+component,n_records
+original_train,616
+original_validation,68
+stage1_negative_train_unique_objects,19727
+stage1_negative_validation_unique_objects,100
+stage2_negative_train_unique_objects,3428
+stage2_negative_validation_unique_objects,100

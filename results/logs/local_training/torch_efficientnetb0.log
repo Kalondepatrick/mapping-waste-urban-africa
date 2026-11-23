@@ -1,0 +1,113 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Device: NVIDIA GeForce RTX 4090 Laptop GPU  (torch 2.11.0+cu128)
+Labels [1, 2, 3, 4, 5, 6, 7, 8, 9] -> channels 0..8; waste label 1 -> channel 0
+  Loaded 804 tiles from dev: data\tiled_data\partitioned\modelDevelopment
+    ignored pixels (label 99): 15,593 (0.03%)
+  Loaded 222 tiles from test: data\tiled_data\partitioned\Validation
+    ignored pixels (label 99): 3,923 (0.03%)
+
+==================== seed 1 ====================
+  Spatial split: 35 blocks, 5 to val (165 tiles), 639 tiles to train
+  efficientnet-b0: 6.25 M parameters (6.25 M trainable)
+  epoch   0  train 0.8229  val 0.7321  *  [1.6 min]
+  epoch   1  train 0.5748  val 0.6175  *  [1.7 min]
+  epoch   2  train 0.5091  val 0.4742  *  [1.7 min]
+  epoch   3  train 0.4901  val 0.4231  *  [1.8 min]
+  epoch   5  train 0.4776  val 0.4777  [2.0 min]
+  epoch   8  train 0.4305  val 0.3955  *  [2.2 min]
+  Epoch 10: encoder unfrozen, lr -> 0.0001
+  epoch  10  train 0.3663  val 0.3744  *  [3.7 min]
+  epoch  13  train 0.3369  val 0.3717  *  [4.0 min]
+  epoch  15  train 0.3208  val 0.3820  [4.3 min]
+  epoch  16  train 0.3119  val 0.3627  *  [4.4 min]
+  epoch  20  train 0.2877  val 0.3760  [4.9 min]
+  epoch  23  train 0.2861  val 0.3524  *  [5.2 min]
+  epoch  24  train 0.2752  val 0.3509  *  [5.3 min]
+  epoch  25  train 0.2615  val 0.3567  [5.4 min]
+  epoch  27  train 0.2591  val 0.3417  *  [5.7 min]
+  epoch  30  train 0.2537  val 0.4091  [6.0 min]
+  epoch  35  train 0.2432  val 0.3376  *  [6.6 min]
+  epoch  40  train 0.2211  val 0.3821  [7.2 min]
+  epoch  41  train 0.2139  val 0.3297  *  [7.4 min]
+  epoch  45  train 0.2076  val 0.3767  [7.9 min]
+  epoch  47  train 0.2005  val 0.3222  *  [8.1 min]
+  epoch  50  train 0.1910  val 0.3428  [8.5 min]
+  epoch  55  train 0.1936  val 0.3463  [9.1 min]
+  epoch  60  train 0.1761  val 0.4026  [9.7 min]
+  epoch  65  train 0.1707  val 0.3351  [10.3 min]
+  Early stopping at epoch 67 (best val_loss 0.3222)
+  Threshold chosen on val: t* = 0.4875
+split   rule  prevalence  precision   recall       f1      iou      fpr
+  val argmax    0.054193   0.756300 0.758529 0.757413 0.609545 0.014005
+  val thresh    0.054193   0.782117 0.744979 0.763097 0.616941 0.011892
+ test argmax    0.033015   0.725459 0.656933 0.689498 0.526132 0.008488
+ test thresh    0.033015   0.747714 0.638964 0.689074 0.525639 0.007361
+
+==================== seed 2 ====================
+  Spatial split: 35 blocks, 5 to val (165 tiles), 639 tiles to train
+  efficientnet-b0: 6.25 M parameters (6.25 M trainable)
+  epoch   0  train 0.8858  val 0.8479  *  [0.1 min]
+  epoch   1  train 0.5607  val 0.5670  *  [0.1 min]
+  epoch   2  train 0.5280  val 0.5514  *  [0.2 min]
+  epoch   3  train 0.4932  val 0.4708  *  [0.3 min]
+  epoch   4  train 0.4766  val 0.4176  *  [0.4 min]
+  epoch   5  train 0.4838  val 0.4088  *  [0.4 min]
+  epoch   6  train 0.4472  val 0.3808  *  [0.5 min]
+  Epoch 10: encoder unfrozen, lr -> 0.0001
+  epoch  10  train 0.3645  val 0.3748  *  [0.8 min]
+  epoch  11  train 0.3567  val 0.3709  *  [1.0 min]
+  epoch  12  train 0.3525  val 0.3589  *  [1.1 min]
+  epoch  14  train 0.3329  val 0.3548  *  [1.3 min]
+  epoch  15  train 0.3152  val 0.3650  [1.5 min]
+  epoch  20  train 0.2896  val 0.3609  [2.1 min]
+  epoch  25  train 0.2623  val 0.3825  [2.7 min]
+  epoch  30  train 0.2581  val 0.3978  [3.3 min]
+  Early stopping at epoch 34 (best val_loss 0.3548)
+  Threshold chosen on val: t* = 0.4700
+split   rule  prevalence  precision   recall       f1      iou      fpr
+  val argmax    0.054193   0.772721 0.742721 0.757424 0.609559 0.012517
+  val thresh    0.054193   0.806415 0.721959 0.761854 0.615318 0.009930
+ test argmax    0.033015   0.683580 0.698289 0.690856 0.527716 0.011036
+ test thresh    0.033015   0.708529 0.668776 0.688079 0.524482 0.009393
+
+==================== seed 3 ====================
+  Spatial split: 35 blocks, 5 to val (165 tiles), 639 tiles to train
+  efficientnet-b0: 6.25 M parameters (6.25 M trainable)
+  epoch   0  train 0.9880  val 0.7772  *  [0.1 min]
+  epoch   1  train 0.5997  val 0.5571  *  [0.1 min]
+  epoch   2  train 0.5437  val 0.4927  *  [0.2 min]
+  epoch   3  train 0.5083  val 0.4491  *  [0.3 min]
+  epoch   5  train 0.4746  val 0.4100  *  [0.4 min]
+  epoch   8  train 0.4150  val 0.3898  *  [0.7 min]
+  Epoch 10: encoder unfrozen, lr -> 0.0001
+  epoch  10  train 0.3654  val 0.3914  [0.9 min]
+  epoch  11  train 0.3649  val 0.3851  *  [1.0 min]
+  epoch  12  train 0.3444  val 0.3736  *  [1.1 min]
+  epoch  14  train 0.3329  val 0.3627  *  [1.4 min]
+  epoch  15  train 0.3359  val 0.3945  [1.5 min]
+  epoch  18  train 0.3016  val 0.3587  *  [1.9 min]
+  epoch  20  train 0.2872  val 0.3725  [2.1 min]
+  epoch  24  train 0.2766  val 0.3554  *  [2.6 min]
+  epoch  25  train 0.2708  val 0.3546  *  [2.8 min]
+  epoch  30  train 0.2538  val 0.3948  [3.4 min]
+  epoch  31  train 0.2476  val 0.3534  *  [3.5 min]
+  epoch  32  train 0.2435  val 0.3452  *  [3.6 min]
+  epoch  35  train 0.2349  val 0.3963  [4.0 min]
+  epoch  40  train 0.2263  val 0.3464  [4.6 min]
+  epoch  45  train 0.2059  val 0.3565  [5.2 min]
+  epoch  50  train 0.2020  val 0.3703  [5.8 min]
+  Early stopping at epoch 52 (best val_loss 0.3452)
+  Threshold chosen on val: t* = 0.3372
+split   rule  prevalence  precision   recall       f1      iou      fpr
+  val argmax    0.054193   0.808462 0.690147 0.744634 0.593161 0.009369
+  val thresh    0.054193   0.766779 0.748623 0.757592 0.609777 0.013047
+ test argmax    0.033015   0.716440 0.614795 0.661737 0.494474 0.008308
+ test thresh    0.033015   0.693191 0.654343 0.673207 0.507394 0.009888
+
+=========== Summary across seeds (mean) ===========
+              prevalence  precision    recall        f1       iou       fpr
+split rule                                                                 
+test  argmax    0.033015   0.708493  0.656672  0.680697  0.516108  0.009277
+      thresh    0.033015   0.716478  0.654028  0.683453  0.519172  0.008881
+val   argmax    0.054193   0.779161  0.730466  0.753157  0.604089  0.011964
+      thresh    0.054193   0.785104  0.738520  0.760847  0.614012  0.011623

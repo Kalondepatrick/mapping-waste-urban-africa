@@ -1,0 +1,17 @@
+sample_id,split,n_tiles
+2,training,4
+9,training,4
+12,training,4
+15,training,4
+17,training,4
+18,training,3
+19,training,4
+21,validation,4
+24,training,3
+27,training,4
+28,training,2
+31,validation,9
+39,validation,4
+40,training,4
+41,training,5
+42,validation,4

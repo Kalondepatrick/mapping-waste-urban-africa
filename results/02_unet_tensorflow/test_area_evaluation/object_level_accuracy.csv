@@ -1,0 +1,2 @@
+probability_threshold,minimum_predicted_area_m2,minimum_reference_coverage,manual_waste_piles,predicted_waste_piles,true_positive_objects,false_positive_objects,false_negative_objects,object_precision,object_recall,object_f1,manual_total_area_m2,predicted_total_area_m2,signed_area_error_m2,absolute_area_error_m2,percentage_area_error
+0.5,0.25,0.01,43,587,33,554,10,0.056218057921635436,0.7674418604651163,0.10476190476190476,1143.3684412197842,3204.177312186134,2060.80887096635,2060.80887096635,180.2401392824704

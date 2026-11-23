@@ -1,0 +1,2 @@
+model,threshold,reference_complete,tp,fp,fn,tn,precision,recall,f1,iou,accuracy,prediction_rule,minimum_object_area_m2,reference_rule
+refined,0.65,True,363174,667118,281542,282709926,0.3524961855473982,0.5633084955236104,0.4336385259055479,0.27684447879838453,0.9966599038045536,probability_threshold_then_minimum_area_filter,0.25,merged contiguous corrected waste units; all other valid test-area pixels non-waste

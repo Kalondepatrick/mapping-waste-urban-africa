@@ -1,0 +1,68 @@
+=== stage 1: dependencies ===
+  ok  cuda=True device=NVIDIA GeForce RTX 4090 Laptop GPU
+      torch 2.11.0+cu128
+      timm 1.0.31
+      segmentation_models_pytorch 0.6.0
+      scipy 1.18.1
+      rasterio 1.5.2
+
+=== loading a few real tiles for smoke training ===
+  Loaded 8 tiles from preflight: C:\Users\Peter\Documents\GitHub\mapping-waste-urban-africa\data\tiled_data\partitioned\modelDevelopment
+    ignored pixels (label 99): 250 (0.05%)
+
+=== satlas-aerial_finetuned ===
+  FAIL (weights) SatlasPretrain Aerial_SwinB_SI download/load failed: ChunkedEncodingError: ('Connection broken: IncompleteRead(131961156 bytes read, 372478518 more expected)', IncompleteRead(131961156 bytes read, 372
+
+=== satlas-aerial_frozen ===
+  FAIL (weights) SatlasPretrain Aerial_SwinB_SI download/load failed: ChunkedEncodingError: ('Connection broken: IncompleteRead(770048 bytes read, 503669626 more expected)', IncompleteRead(770048 bytes read, 503669626
+
+=== dinov3-vitl_finetuned ===
+'[Errno 11001] getaddrinfo failed' thrown while requesting HEAD https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/model.safetensors
+Retrying in 1s [Retry 1/5].
+'[Errno 11001] getaddrinfo failed' thrown while requesting HEAD https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/model.safetensors
+Retrying in 2s [Retry 2/5].
+'[Errno 11001] getaddrinfo failed' thrown while requesting HEAD https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/model.safetensors
+Retrying in 4s [Retry 3/5].
+'[WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond' thrown while requesting HEAD https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/model.safetensors
+Retrying in 8s [Retry 4/5].
+'[Errno 11001] getaddrinfo failed' thrown while requesting HEAD https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/model.safetensors
+Retrying in 8s [Retry 5/5].
+'[Errno 11001] getaddrinfo failed' thrown while requesting HEAD https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/model.safetensors
+'[Errno 11001] getaddrinfo failed' thrown while requesting HEAD https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/pytorch_model.bin
+Retrying in 1s [Retry 1/5].
+'[WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond' thrown while requesting HEAD https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/pytorch_model.bin
+Retrying in 2s [Retry 2/5].
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Error while downloading from https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/pytorch_model.bin: peer closed connection without sending complete message body (received 356213 bytes, expected 1212434690)
+Trying to resume download...
+Error while downloading from https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/pytorch_model.bin: [Errno 11001] getaddrinfo failed
+Trying to resume download...
+Error while downloading from https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/pytorch_model.bin: [Errno 11001] getaddrinfo failed
+Trying to resume download...
+Error while downloading from https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/pytorch_model.bin: [Errno 11001] getaddrinfo failed
+Trying to resume download...
+Error while downloading from https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/pytorch_model.bin: [Errno 11001] getaddrinfo failed
+Trying to resume download...
+Error while downloading from https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/pytorch_model.bin: Server disconnected without sending a response.
+Max retries exceeded.
+  FAIL (weights) Could not load pretrained weights for vit_large_patch16_dinov3.lvd1689m: RemoteProtocolError: Server disconnected without sending a response.
+
+=== dinov3-vitl_frozen ===
+'[Errno 11001] getaddrinfo failed' thrown while requesting HEAD https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/model.safetensors
+Retrying in 1s [Retry 1/5].
+Error while downloading from https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/model.safetensors: [Errno 11001] getaddrinfo failed
+Trying to resume download...
+Error while downloading from https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/model.safetensors: [Errno 11001] getaddrinfo failed
+Trying to resume download...
+Error while downloading from https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/model.safetensors: [Errno 11001] getaddrinfo failed
+Trying to resume download...
+Error while downloading from https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/model.safetensors: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+Trying to resume download...
+Error while downloading from https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/model.safetensors: [Errno 11001] getaddrinfo failed
+Trying to resume download...
+Error while downloading from https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/model.safetensors: [Errno 11001] getaddrinfo failed
+Max retries exceeded.
+  FAIL (weights) Could not load pretrained weights for vit_large_patch16_dinov3.lvd1689m: ConnectError: [Errno 11001] getaddrinfo failed
+
+=== 6/10 configs passed ===
+report: ./results_v6\preflight_report.json

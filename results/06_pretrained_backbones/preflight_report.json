@@ -1,0 +1,254 @@
+{
+  "stages": {
+    "dependencies": {
+      "status": "pass",
+      "versions": {
+        "torch": "2.11.0+cu128",
+        "timm": "1.0.31",
+        "segmentation_models_pytorch": "0.6.0",
+        "scipy": "1.18.1",
+        "rasterio": "1.5.2"
+      },
+      "cuda": true,
+      "device": "NVIDIA GeForce RTX 4090 Laptop GPU"
+    }
+  },
+  "configs": {
+    "efficientnet-b4-imagenet_finetuned": {
+      "arch": "efficientnet-b4-imagenet",
+      "freeze": false,
+      "checkpoint": {
+        "name": "unet-efficientnet-b4-imagenet",
+        "source": "segmentation_models_pytorch / ImageNet-1k",
+        "pretrained_requested": true,
+        "tensors_total": 704,
+        "tensors_loaded": 704,
+        "tensors_missing": [],
+        "tensors_shape_mismatch": [],
+        "head_replaced": "smp segmentation_head -> 9 classes",
+        "notes": "encoder weights supplied by smp; decoder and head trained from scratch",
+        "fraction": 1.0
+      },
+      "params_total_M": 20.227,
+      "params_trainable_M": 20.227,
+      "forward_shape": [
+        2,
+        9,
+        256,
+        256
+      ],
+      "loss_initial": 2.4562206268310547,
+      "n_grad_tensors": 445,
+      "smoke_losses": [
+        2.2351,
+        2.4142,
+        2.3763
+      ],
+      "peak_gpu_mem_MB": 1078.6,
+      "status": "pass",
+      "seconds": 403.6
+    },
+    "efficientnet-b4-imagenet_frozen": {
+      "arch": "efficientnet-b4-imagenet",
+      "freeze": true,
+      "checkpoint": {
+        "name": "unet-efficientnet-b4-imagenet",
+        "source": "segmentation_models_pytorch / ImageNet-1k",
+        "pretrained_requested": true,
+        "tensors_total": 704,
+        "tensors_loaded": 704,
+        "tensors_missing": [],
+        "tensors_shape_mismatch": [],
+        "head_replaced": "smp segmentation_head -> 9 classes",
+        "notes": "encoder weights supplied by smp; decoder and head trained from scratch; encoder FROZEN",
+        "fraction": 1.0
+      },
+      "params_total_M": 20.227,
+      "params_trainable_M": 2.678,
+      "forward_shape": [
+        2,
+        9,
+        256,
+        256
+      ],
+      "loss_initial": 3.2652506828308105,
+      "n_grad_tensors": 32,
+      "smoke_losses": [
+        2.5285,
+        2.4148,
+        2.4165
+      ],
+      "peak_gpu_mem_MB": 335.2,
+      "status": "pass",
+      "seconds": 1.0
+    },
+    "efficientnet-b4-oem_finetuned": {
+      "arch": "efficientnet-b4-oem",
+      "freeze": false,
+      "checkpoint": {
+        "name": "unet-efficientnet-b4-openearthmap",
+        "source": "C:\\Users\\Peter\\Documents\\GitHub\\mapping-waste-urban-africa\\models\\openearthmap\\RGB_Real_5_u-efficientnet-b4.pth",
+        "pretrained_requested": true,
+        "tensors_total": 824,
+        "tensors_loaded": 824,
+        "tensors_missing": [],
+        "tensors_shape_mismatch": [],
+        "head_replaced": "OEM 9-class head dropped -> fresh 9-class head",
+        "notes": "encoder + scSE decoder transferred from OpenEarthMap",
+        "fraction": 1.0
+      },
+      "params_total_M": 20.304,
+      "params_trainable_M": 20.304,
+      "forward_shape": [
+        2,
+        9,
+        256,
+        256
+      ],
+      "loss_initial": 3.585871934890747,
+      "n_grad_tensors": 499,
+      "smoke_losses": [
+        3.1067,
+        1.875,
+        1.8018
+      ],
+      "peak_gpu_mem_MB": 1124.3,
+      "status": "pass",
+      "seconds": 2.0
+    },
+    "efficientnet-b4-oem_frozen": {
+      "arch": "efficientnet-b4-oem",
+      "freeze": true,
+      "checkpoint": {
+        "name": "unet-efficientnet-b4-openearthmap",
+        "source": "C:\\Users\\Peter\\Documents\\GitHub\\mapping-waste-urban-africa\\models\\openearthmap\\RGB_Real_5_u-efficientnet-b4.pth",
+        "pretrained_requested": true,
+        "tensors_total": 824,
+        "tensors_loaded": 824,
+        "tensors_missing": [],
+        "tensors_shape_mismatch": [],
+        "head_replaced": "OEM 9-class head dropped -> fresh 9-class head",
+        "notes": "encoder + scSE decoder transferred from OpenEarthMap; encoder FROZEN",
+        "fraction": 1.0
+      },
+      "params_total_M": 20.304,
+      "params_trainable_M": 2.756,
+      "forward_shape": [
+        2,
+        9,
+        256,
+        256
+      ],
+      "loss_initial": 2.8827831745147705,
+      "n_grad_tensors": 86,
+      "smoke_losses": [
+        2.241,
+        3.4231,
+        3.2742
+      ],
+      "peak_gpu_mem_MB": 334.4,
+      "status": "pass",
+      "seconds": 1.1
+    },
+    "satlas-aerial_finetuned": {
+      "arch": "satlas-aerial",
+      "freeze": false,
+      "status": "fail",
+      "failure_class": "pretrained_weights_unavailable",
+      "error": "SatlasPretrain Aerial_SwinB_SI download/load failed: ChunkedEncodingError: ('Connection broken: IncompleteRead(131961156 bytes read, 372478518 more expected)', IncompleteRead(131961156 bytes read, 372478518 more expected))",
+      "diagnosis": "Pretrained weights could not be obtained. This config is NOT runnable; a randomly initialised substitute would invalidate it."
+    },
+    "satlas-aerial_frozen": {
+      "arch": "satlas-aerial",
+      "freeze": true,
+      "status": "fail",
+      "failure_class": "pretrained_weights_unavailable",
+      "error": "SatlasPretrain Aerial_SwinB_SI download/load failed: ChunkedEncodingError: ('Connection broken: IncompleteRead(770048 bytes read, 503669626 more expected)', IncompleteRead(770048 bytes read, 503669626 more expected))",
+      "diagnosis": "Pretrained weights could not be obtained. This config is NOT runnable; a randomly initialised substitute would invalidate it."
+    },
+    "dinov3-vitl_finetuned": {
+      "arch": "dinov3-vitl",
+      "freeze": false,
+      "status": "fail",
+      "failure_class": "pretrained_weights_unavailable",
+      "error": "Could not load pretrained weights for vit_large_patch16_dinov3.lvd1689m: RemoteProtocolError: Server disconnected without sending a response.",
+      "diagnosis": "Pretrained weights could not be obtained. This config is NOT runnable; a randomly initialised substitute would invalidate it."
+    },
+    "dinov3-vitl_frozen": {
+      "arch": "dinov3-vitl",
+      "freeze": true,
+      "status": "fail",
+      "failure_class": "pretrained_weights_unavailable",
+      "error": "Could not load pretrained weights for vit_large_patch16_dinov3.lvd1689m: ConnectError: [Errno 11001] getaddrinfo failed",
+      "diagnosis": "Pretrained weights could not be obtained. This config is NOT runnable; a randomly initialised substitute would invalidate it."
+    },
+    "dinov3-sat-vitl_finetuned": {
+      "arch": "dinov3-sat-vitl",
+      "freeze": false,
+      "checkpoint": {
+        "name": "vitunet-vit_large_patch16_dinov3.sat493m",
+        "source": "timm vit_large_patch16_dinov3.sat493m (SAT-493M satellite)",
+        "pretrained_requested": true,
+        "tensors_total": 318,
+        "tensors_loaded": 318,
+        "tensors_missing": [],
+        "tensors_shape_mismatch": [],
+        "head_replaced": "timm classification head removed (num_classes=0); fresh 9-class conv segmentation head",
+        "notes": "patch grid 16x16 @ 256px; backbone fine-tuned; decoder and stem trained from scratch",
+        "fraction": 1.0
+      },
+      "params_total_M": 304.126,
+      "params_trainable_M": 304.126,
+      "forward_shape": [
+        2,
+        9,
+        256,
+        256
+      ],
+      "loss_initial": 2.2704830169677734,
+      "n_grad_tensors": 358,
+      "smoke_losses": [
+        2.4192,
+        2.2895,
+        2.1955
+      ],
+      "peak_gpu_mem_MB": 6286.0,
+      "status": "pass",
+      "seconds": 14.3
+    },
+    "dinov3-sat-vitl_frozen": {
+      "arch": "dinov3-sat-vitl",
+      "freeze": true,
+      "checkpoint": {
+        "name": "vitunet-vit_large_patch16_dinov3.sat493m",
+        "source": "timm vit_large_patch16_dinov3.sat493m (SAT-493M satellite)",
+        "pretrained_requested": true,
+        "tensors_total": 318,
+        "tensors_loaded": 318,
+        "tensors_missing": [],
+        "tensors_shape_mismatch": [],
+        "head_replaced": "timm classification head removed (num_classes=0); fresh 9-class conv segmentation head",
+        "notes": "patch grid 16x16 @ 256px; backbone FROZEN; decoder and stem trained from scratch",
+        "fraction": 1.0
+      },
+      "params_total_M": 304.126,
+      "params_trainable_M": 1.047,
+      "forward_shape": [
+        2,
+        9,
+        256,
+        256
+      ],
+      "loss_initial": 2.4547133445739746,
+      "n_grad_tensors": 40,
+      "smoke_losses": [
+        2.1815,
+        2.0874,
+        2.0228
+      ],
+      "peak_gpu_mem_MB": 4899.1,
+      "status": "pass",
+      "seconds": 11.6
+    }
+  }
+}

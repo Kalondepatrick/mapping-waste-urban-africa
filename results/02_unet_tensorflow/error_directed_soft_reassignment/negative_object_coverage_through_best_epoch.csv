@@ -1,0 +1,3 @@
+negative_source,available_training_objects,seen_through_best_epoch,coverage_percent_through_best_epoch
+stage1_rejected,19677,19677,100.0
+stage2_not_waste,3428,3428,100.0

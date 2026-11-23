@@ -1,0 +1,43 @@
+# Keep LF endings on everything that is consumed by Linux/HPC.
+#
+# This is not cosmetic. A file list written with CRLF produced tile names like
+# "hn_000013.tif\r" on Sapitwa, and a tar built from it shipped an empty
+# 45-byte archive while reporting success. SLURM scripts with CRLF fail with
+# obscure "bad interpreter" errors.
+
+*.sh        text eol=lf
+*.sbatch    text eol=lf
+hpc/**/*.txt text eol=lf
+
+# Source files: normalise in the repository, let Git decide on checkout.
+*.py        text
+*.R         text
+*.r         text
+*.md        text
+*.cff       text
+*.yml       text
+*.yaml      text
+*.json      text
+*.csv       text
+
+# Binary — never touch.
+*.tif       binary
+*.tiff      binary
+*.png       binary
+*.jpg       binary
+*.jpeg      binary
+*.keras     binary
+*.h5        binary
+*.pth       binary
+*.rds       binary
+*.gpkg      binary
+*.shp       binary
+*.shx       binary
+*.dbf       binary
+*.qix       binary
+*.sqlite    binary
+*.zip       binary
+*.docx      binary
+*.pdf       binary
+*.qgz       binary
+*.xlsx      binary

@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "upload_type": "dataset",
+    "title": "Ultra-fine-resolution drone imagery and annotated waste-pile dataset for Ndirande, Blantyre, Malawi",
+    "description": "<p>Imagery, annotations, spatial partitions and trained models supporting a study of unmanaged waste mapping in an informal urban settlement, and of the conditions under which pretrained and foundation models improve environmental monitoring where data are scarce.</p><p><strong>Site and sensor.</strong> Ndirande informal settlement, Blantyre, Malawi. Uncrewed aerial vehicle RGB orthomosaic at 0.0381 m ground sample distance.</p><p><strong>Contents.</strong> 1,026 image-mask tile pairs of 256 x 256 px, partitioned into 804 development and 222 validation tiles by a spatial block split (250 m blocks on tile centroids, seed 42) with zero shared grid cells; the authoritative partition files under <code>splits/</code>; digitised waste polygons, buildings, rivers, areas of interest and the study grid under <code>vectors/</code>; the OpenEarthMap pretrained checkpoint under <code>pretrained_weights/</code>; and models trained in this study under <code>trained_models/</code>.</p><p><strong>Label semantics.</strong> Raw classes 1-9, with waste as class 1. Value 99 is a no-data fill, not a class, and is excluded from training and from every reported metric.</p><p><strong>Source imagery.</strong> The RGB orthomosaic from which every tile was cut is NOT included here, because it is already openly available via OpenAerialMap. See the related identifier on this record for the link. Excluding it keeps the deposit to 7.4 GB without affecting reproducibility: all training and evaluation run from the tiles below, not from the orthomosaic.</p><p><strong>Scope of this deposit.</strong> This record contains the material required to reproduce every reported result. Derived products that any user can regenerate from the code are deliberately excluded: the source orthomosaic, whole-area prediction rasters, per-object preview chips from the manual review campaign, imagery for other dates, and superseded intermediate tiling folders. See <code>README.md</code> and <code>MANIFEST.csv</code> in the archive for a per-folder inventory with sizes.</p><p><strong>Code.</strong> https://github.com/Kalondepatrick/mapping-waste-urban-africa</p><p><strong>Third-party material.</strong> The OpenEarthMap checkpoint retains its original licence. Backbones fetched at runtime (DINOv3, DINOv3-SAT, SatlasPretrain, ImageNet) are not redistributed here; their sources are recorded in <code>03_unet_pytorch/MODELS.md</code> in the code repository. The DINOv3 weights are released under the DINOv3 licence, which is not Apache or MIT.</p>",
+    "creators": [
+      {
+        "name": "Kalonde, Patrick Ken",
+        "affiliation": "Malawi-Liverpool Wellcome Programme, Kamuzu University of Health Sciences / Lancaster Environment Centre, Lancaster University"
+      }
+    ],
+    "keywords": [
+      "remote sensing",
+      "unmanned aerial vehicle",
+      "drone imagery",
+      "semantic segmentation",
+      "foundation models",
+      "solid waste",
+      "informal settlements",
+      "Malawi",
+      "class imbalance",
+      "prevalence shift",
+      "annotated dataset"
+    ],
+    "license": "cc-by-4.0",
+    "access_right": "open",
+    "language": "eng",
+    "locations": [
+      {
+        "place": "Ndirande, Blantyre, Malawi",
+        "lat": -15.7667,
+        "lon": 35.0333,
+        "description": "Informal settlement surveyed by UAV at 3.81 cm ground sample distance"
+      }
+    ],
+    "related_identifiers": [
+      {
+        "identifier": "https://github.com/Kalondepatrick/mapping-waste-urban-africa",
+        "relation": "isSupplementTo",
+        "resource_type": "software"
+      },
+      {
+        "identifier": "https://openaerialmap.org/",
+        "relation": "isDerivedFrom",
+        "resource_type": "dataset"
+      }
+    ],
+    "notes": "Coordinate reference system WGS 84 / UTM zone 36S (EPSG:32736). Tile size 256 x 256 px, approximately 9.75 m on the ground. Six of the 222 validation tiles overlap development tiles; the 216 tiles with zero overlap are listed in the code repository as test_tiles_clean.csv and are the partition used for all reported results. The source orthomosaic is published separately on OpenAerialMap and is not duplicated in this record; replace the OpenAerialMap related identifier with the specific record URL before publishing."
+  }
+}

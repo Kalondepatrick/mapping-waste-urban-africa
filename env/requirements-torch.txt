@@ -1,0 +1,28 @@
+# PyTorch stack — 03_unet_pytorch/, 06_evaluation/, 07_figures/
+# Versions are those used for every reported result (captured 2026-11-23).
+#
+# torch/torchvision must match your CUDA version. The runs reported in the
+# paper used the cu128 builds:
+#   pip install torch==2.11.0 torchvision==0.26.0 \
+#       --index-url https://download.pytorch.org/whl/cu128
+torch==2.11.0
+torchvision==0.26.0
+
+timm==1.0.31
+segmentation_models_pytorch==0.6.0
+satlaspretrain-models==0.3.1
+huggingface_hub==2.4.0
+safetensors==0.8.0
+
+numpy==2.5.4
+scipy==1.18.1
+pandas==3.1.1
+scikit-learn==1.9.1
+matplotlib==3.11.2
+rasterio==1.5.2
+pillow==13.0.0
+
+# torchgeo is required only for the DOFA backbone, which is not part of the
+# reported results. Its install has failed with a dependency hash mismatch;
+# retry with --no-cache-dir rather than disabling hash verification.
+# torchgeo

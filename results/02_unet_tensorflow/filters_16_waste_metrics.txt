@@ -1,0 +1,9 @@
+--- Waste Evaluation Results: filters_16 ---
+Waste Raw Raster Label      : 1
+Waste Model Channel         : 0
+Optimal Probability Threshold: 0.3830
+Precision @ Optimal Threshold: 0.8063
+Recall @ Optimal Threshold   : 0.8178
+F1 Score @ Optimal Threshold : 0.8120
+IoU @ Optimal Threshold      : 0.6835
+Average Precision            : 0.8829

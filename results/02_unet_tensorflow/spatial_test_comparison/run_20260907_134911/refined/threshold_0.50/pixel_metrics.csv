@@ -1,0 +1,2 @@
+model,threshold,reference_complete,tp,fp,fn,tn,precision,recall,f1,iou,accuracy,prediction_rule,reference_rule
+refined,0.5,True,443540,1236242,205235,282136743,0.264046167895596,0.683657662517822,0.3809569617578612,0.23529761270057512,0.9949247656235917,probability_threshold_then_0.25m2_object_filter,corrected_waste_polygons; other pixels non-waste only if exhaustive

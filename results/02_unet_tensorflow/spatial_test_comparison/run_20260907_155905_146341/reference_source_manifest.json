@@ -1,0 +1,33 @@
+{
+  "path": "C:\\Users\\Peter\\Documents\\GitHub\\mapping-waste-urban-africa\\05_finetuning\\step0\\waste.shp",
+  "source_features": 39,
+  "source_crs": "EPSG:32736",
+  "source_fingerprint": "23074454f785f40d3081b20d40ef1d4cef3df4f04b6051dbaef4a1a02b189210",
+  "files": {
+    "waste.shp": {
+      "sha256": "96ff6db0538e7308c9214c0db195f35ee3a19e2fe0ae17d5d3d955f792f880e0",
+      "bytes": 24384,
+      "modified_ns": 1788787997265918000
+    },
+    "waste.shx": {
+      "sha256": "b12b90efc618be03232a52cd29860ab12546ecc955586e2c6a4097e4ee19a318",
+      "bytes": 412,
+      "modified_ns": 1788787997265918000
+    },
+    "waste.dbf": {
+      "sha256": "46cd1883b1010f8088e9b003c53b1fa0c613022cd502fc438d3286aacc4333f6",
+      "bytes": 917,
+      "modified_ns": 1788787997287968400
+    },
+    "waste.prj": {
+      "sha256": "acb0903b0eb2f71337bf730a1d5438b8fbef4da5f222f8290587298390a7662a",
+      "bytes": 408,
+      "modified_ns": 1788521606847653400
+    },
+    "waste.cpg": {
+      "sha256": "3ad3031f5503a4404af825262ee8232cc04d4ea6683d42c5dd0a2f2a27ac9824",
+      "bytes": 5,
+      "modified_ns": 1788521606847653400
+    }
+  }
+}

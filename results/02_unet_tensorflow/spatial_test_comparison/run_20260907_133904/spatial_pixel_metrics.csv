@@ -1,0 +1,5 @@
+model,threshold,reference_complete,tp,fp,fn,tn,precision,recall,f1,iou,accuracy,prediction_rule,reference_rule
+original,0.5,False,521731,4623464,127044,278749521,,0.8041786443682324,,,,probability_threshold_then_0.25m2_object_filter,corrected_waste_polygons; other pixels non-waste only if exhaustive
+original,0.9,False,286668,969737,362107,282403248,,0.44186042927054836,,,,probability_threshold_then_0.25m2_object_filter,corrected_waste_polygons; other pixels non-waste only if exhaustive
+refined,0.5,False,443540,1236242,205235,282136743,,0.683657662517822,,,,probability_threshold_then_0.25m2_object_filter,corrected_waste_polygons; other pixels non-waste only if exhaustive
+refined,0.9,False,105093,114966,543682,283258019,,0.1619868213170976,,,,probability_threshold_then_0.25m2_object_filter,corrected_waste_polygons; other pixels non-waste only if exhaustive

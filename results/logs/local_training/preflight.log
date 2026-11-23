@@ -1,0 +1,104 @@
+=== stage 1: dependencies ===
+  ok  cuda=True device=NVIDIA GeForce RTX 4090 Laptop GPU
+      torch 2.11.0+cu128
+      timm 1.0.31
+      segmentation_models_pytorch 0.6.0
+      scipy 1.18.1
+      rasterio 1.5.2
+
+=== loading a few real tiles for smoke training ===
+  Loaded 8 tiles from preflight: C:\Users\Peter\Documents\GitHub\mapping-waste-urban-africa\data\tiled_data\partitioned\modelDevelopment
+    ignored pixels (label 99): 250 (0.05%)
+
+=== efficientnet-b4-imagenet_finetuned ===
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+C:\Users\Peter\Documents\GitHub\mapping-waste-urban-africa\02_custom__unet\preflight.py:110: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\torch\csrc\autograd\generated\python_variable_methods.cpp:837.)
+  info["loss_initial"] = float(loss)
+  PASS  704/704 tensors (100.0%) from segmentation_models_pytorch / ImageNet-1k
+        params 20.227M (20.227M trainable), peak GPU 1078.6 MB
+        smoke losses [2.2351, 2.4142, 2.3763]
+
+=== efficientnet-b4-imagenet_frozen ===
+  PASS  704/704 tensors (100.0%) from segmentation_models_pytorch / ImageNet-1k
+        params 20.227M (2.678M trainable), peak GPU 335.2 MB
+        smoke losses [2.5285, 2.4148, 2.4165]
+
+=== efficientnet-b4-oem_finetuned ===
+  PASS  824/824 tensors (100.0%) from C:\Users\Peter\Documents\GitHub\mapping-waste-urban-africa\m
+        params 20.304M (20.304M trainable), peak GPU 1124.3 MB
+        smoke losses [3.1067, 1.875, 1.8018]
+
+=== efficientnet-b4-oem_frozen ===
+  PASS  824/824 tensors (100.0%) from C:\Users\Peter\Documents\GitHub\mapping-waste-urban-africa\m
+        params 20.304M (2.756M trainable), peak GPU 334.4 MB
+        smoke losses [2.241, 3.4231, 3.2742]
+
+=== satlas-aerial_finetuned ===
+  FAIL (weights) satlaspretrain_models is not installed, so SatlasPretrain weights cannot be loaded. Install it (pip install satlaspretrain_models) and re-run. Not substituting a random backbone.
+
+=== satlas-aerial_frozen ===
+  FAIL (weights) satlaspretrain_models is not installed, so SatlasPretrain weights cannot be loaded. Install it (pip install satlaspretrain_models) and re-run. Not substituting a random backbone.
+
+=== dinov3-vitl_finetuned ===
+Error while downloading from https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/model.safetensors: peer closed connection without sending complete message body (received 222018897 bytes, expected 1212347640)
+Trying to resume download...
+Error while downloading from https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/model.safetensors: peer closed connection without sending complete message body (received 498495589 bytes, expected 992146680)
+Trying to resume download...
+Error while downloading from https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/model.safetensors: peer closed connection without sending complete message body (received 9431695 bytes, expected 499315960)
+Trying to resume download...
+Error while downloading from https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/model.safetensors: peer closed connection without sending complete message body (received 331662804 bytes, expected 499315960)
+Trying to resume download...
+Error while downloading from https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/model.safetensors: peer closed connection without sending complete message body (received 67984718 bytes, expected 174257400)
+Trying to resume download...
+Error while downloading from https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/model.safetensors: The read operation timed out
+Trying to resume download...
+Error while downloading from https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/model.safetensors: [Errno 11001] getaddrinfo failed
+Trying to resume download...
+Error while downloading from https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/model.safetensors: [Errno 11001] getaddrinfo failed
+Trying to resume download...
+Error while downloading from https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/model.safetensors: [Errno 11001] getaddrinfo failed
+Trying to resume download...
+Error while downloading from https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/model.safetensors: [Errno 11001] getaddrinfo failed
+Trying to resume download...
+Error while downloading from https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/model.safetensors: [Errno 11001] getaddrinfo failed
+Max retries exceeded.
+  FAIL (weights) Could not load pretrained weights for vit_large_patch16_dinov3.lvd1689m: ConnectError: [Errno 11001] getaddrinfo failed
+
+=== dinov3-vitl_frozen ===
+'[Errno 11001] getaddrinfo failed' thrown while requesting HEAD https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/model.safetensors
+Retrying in 1s [Retry 1/5].
+'[Errno 11001] getaddrinfo failed' thrown while requesting HEAD https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/model.safetensors
+Retrying in 2s [Retry 2/5].
+'[Errno 11001] getaddrinfo failed' thrown while requesting HEAD https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/model.safetensors
+Retrying in 4s [Retry 3/5].
+'[Errno 11001] getaddrinfo failed' thrown while requesting HEAD https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/model.safetensors
+Retrying in 8s [Retry 4/5].
+'[Errno 11001] getaddrinfo failed' thrown while requesting HEAD https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/model.safetensors
+Retrying in 8s [Retry 5/5].
+'[Errno 11001] getaddrinfo failed' thrown while requesting HEAD https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/model.safetensors
+'[Errno 11001] getaddrinfo failed' thrown while requesting HEAD https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/pytorch_model.bin
+Retrying in 1s [Retry 1/5].
+'[Errno 11001] getaddrinfo failed' thrown while requesting HEAD https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/pytorch_model.bin
+Retrying in 2s [Retry 2/5].
+'[Errno 11001] getaddrinfo failed' thrown while requesting HEAD https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/pytorch_model.bin
+Retrying in 4s [Retry 3/5].
+'[Errno 11001] getaddrinfo failed' thrown while requesting HEAD https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/pytorch_model.bin
+Retrying in 8s [Retry 4/5].
+'[Errno 11001] getaddrinfo failed' thrown while requesting HEAD https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/pytorch_model.bin
+Retrying in 8s [Retry 5/5].
+'[Errno 11001] getaddrinfo failed' thrown while requesting HEAD https://huggingface.co/timm/vit_large_patch16_dinov3.lvd1689m/resolve/main/pytorch_model.bin
+  FAIL (weights) Could not load pretrained weights for vit_large_patch16_dinov3.lvd1689m: LocalEntryNotFoundError: An error happened while trying to locate the file on the Hub and we cannot find the requested files in
+
+=== dinov3-sat-vitl_finetuned ===
+  PASS  318/318 tensors (100.0%) from timm vit_large_patch16_dinov3.sat493m (SAT-493M satellite)
+        params 304.126M (304.126M trainable), peak GPU 6286.0 MB
+        smoke losses [2.4192, 2.2895, 2.1955]
+
+=== dinov3-sat-vitl_frozen ===
+  PASS  318/318 tensors (100.0%) from timm vit_large_patch16_dinov3.sat493m (SAT-493M satellite)
+        params 304.126M (1.047M trainable), peak GPU 4899.1 MB
+        smoke losses [2.1815, 2.0874, 2.0228]
+
+=== 6/10 configs passed ===
+report: ./results_v6\preflight_report.json

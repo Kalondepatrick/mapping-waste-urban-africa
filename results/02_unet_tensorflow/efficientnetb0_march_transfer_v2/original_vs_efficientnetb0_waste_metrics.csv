@@ -1,0 +1,13 @@
+Model,Dataset,Decision,Threshold,Precision,Recall,F1,IoU,TP_pixels,FP_pixels,FN_pixels
+original_custom_unet,new_validation,multiclass_argmax,,0.0,0.0,0.0,0.0,0.0,563.0,0.0
+original_custom_unet,new_validation,waste_probability_0.50,0.5,0.0,0.0,0.0,0.0,0.0,475.0,0.0
+original_custom_unet,new_validation,diagnostic_optimal_threshold,,,,,,,,
+original_custom_unet,old_monitor,multiclass_argmax,,0.8235879740381502,0.808517098720917,0.8159829540693568,0.6891648704499775,170416.0,36503.0,40360.0
+original_custom_unet,old_monitor,waste_probability_0.50,0.5,0.8701555839266008,0.7631324249440165,0.8131375939013417,0.6851153004114525,160850.0,24002.0,49926.0
+original_custom_unet,old_monitor,diagnostic_optimal_threshold,0.42053496837615967,0.8340745035797295,0.8053099024556876,0.8194398515024753,0.6941110561332772,169740.0,33767.0,41036.0
+efficientnetb0_imagenet_unet,new_validation,multiclass_argmax,,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+efficientnetb0_imagenet_unet,new_validation,waste_probability_0.50,0.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+efficientnetb0_imagenet_unet,new_validation,diagnostic_optimal_threshold,,,,,,,,
+efficientnetb0_imagenet_unet,old_monitor,multiclass_argmax,,0.847872797593468,0.009360648271150416,0.018516867430303653,0.009344953346279543,1973.0,354.0,208803.0
+efficientnetb0_imagenet_unet,old_monitor,waste_probability_0.50,0.5,0.0,0.0,0.0,0.0,0.0,0.0,210776.0
+efficientnetb0_imagenet_unet,old_monitor,diagnostic_optimal_threshold,0.085192009806633,0.4345698300917895,0.5384104452119786,0.4809489804351189,0.31661147271596085,113484.0,147657.0,97292.0

@@ -1,0 +1,2 @@
+Experiment,Optimal_Threshold,Precision,Recall,F1_Score,IoU
+filters_16,0.3255,0.7785,0.8252,0.8012,0.6683
