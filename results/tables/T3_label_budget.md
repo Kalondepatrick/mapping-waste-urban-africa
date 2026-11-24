@@ -1,11 +1,14 @@
-**Table 3. Waste-class F1 on held-out data as a function of the number of annotated training tiles, by pretraining domain. Mean of 3 seeds.**
+**TABLE III**
+**Waste-Class F1 by Annotation Budget and Pretraining Corpus**
 
-| Backbone | n = 64 | n = 128 | n = 320 | n = 639 |
-|---|---|---|---|---|
-| DINOv3 ViT-S | 0.7011       | 0.6918       | 0.7407       | 0.7222       |
-| DINOv3-SAT | 0.7007     | 0.6857     | 0.7488     | 0.7450     |
-| DINOv3 ConvNeXt | 0.6976          | 0.6595          | 0.6923          | 0.7276          |
-| OpenEarthMap | 0.6418       | 0.6482       | 0.7139       | 0.7003       |
-| ResNet-34 (ImageNet) | 0.6279               | 0.6162               | 0.6973               | 0.7262               |
-| EfficientNet-B0 (ImageNet) | 0.6030                     | 0.5594                     | 0.6743                     | 0.6843                     |
-| U-Net from scratch | 0.5603             | 0.5548             | 0.6933             | 0.6992             |
+| Backbone | n = 64 | n = 128 | n = 320 | n = 639 | Gain at n = 64 |
+| :--- | ---: | ---: | ---: | ---: | ---: |
+| DINOv3 ViT-S | 0.701 | 0.692 | 0.741 | 0.722 | +0.141 |
+| DINOv3-SAT | 0.701 | 0.686 | 0.749 | 0.745 | +0.140 |
+| DINOv3 ConvNeXt | 0.698 | 0.660 | 0.692 | 0.728 | +0.137 |
+| OpenEarthMap | 0.642 | 0.648 | 0.714 | 0.700 | +0.081 |
+| ResNet-34 (ImageNet) | 0.628 | 0.616 | 0.697 | 0.726 | +0.068 |
+| EfficientNet-B0 (ImageNet) | 0.603 | 0.559 | 0.674 | 0.684 | +0.043 |
+| U-Net from scratch | 0.560 | 0.555 | 0.693 | 0.699 | -- |
+
+*Held-out F1, mean of three seeds, argmax rule. n is the number of annotated training tiles. The same tile subset is drawn for every seed at a given budget, so the spread across seeds reflects training stochasticity only and not the variance of the subset itself; the budget effect is therefore reported as an order of magnitude and not as a point estimate. Rows ordered by F1 at the smallest budget.*

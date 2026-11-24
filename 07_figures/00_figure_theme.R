@@ -32,17 +32,39 @@ RESULTS_DIR <- file.path(ROOT, "results")
 FIG_DIR     <- file.path(RESULTS_DIR, "figures", "manuscript")
 dir.create(FIG_DIR, recursive = TRUE, showWarnings = FALSE)
 
-# --- theme -------------------------------------------------------------------
-paper_theme <- theme_classic(base_size = 10, base_family = "serif") + theme(
-  axis.text.x     = element_text(size = 8.5),
-  axis.title      = element_text(size = 10),
-  legend.position = "bottom",
-  legend.title    = element_blank(),
-  legend.text     = element_text(size = 9),
-  strip.background = element_blank(),
-  strip.text      = element_text(size = 9, face = "bold"),
-  plot.margin     = margin(12, 18, 10, 12)
-)
+# --- IEEE figure specification -----------------------------------------------
+# IEEE Transactions: single-column figures are 3.5 in (88.9 mm) wide, double
+# column 7.16 in (181.9 mm). Body text is 10 pt Times, so figure lettering is
+# set at 8 pt and never smaller than 6 pt after any scaling. Line art is
+# supplied at 600 dpi, and every figure must remain legible in greyscale.
+IEEE_1COL <- 3.5
+IEEE_2COL <- 7.16
+IEEE_BASE <- 8      # pt, lettering
+IEEE_FAMILY <- "serif"   # maps to Times in the pdf and png devices
+
+ieee_theme <- theme_classic(base_size = IEEE_BASE, base_family = IEEE_FAMILY) +
+  theme(
+    axis.text        = element_text(size = IEEE_BASE - 1, colour = "black"),
+    axis.title       = element_text(size = IEEE_BASE, colour = "black"),
+    axis.line        = element_line(linewidth = 0.3, colour = "black"),
+    axis.ticks       = element_line(linewidth = 0.3, colour = "black"),
+    axis.ticks.length = unit(1.6, "pt"),
+    legend.position  = "bottom",
+    legend.title     = element_blank(),
+    legend.text      = element_text(size = IEEE_BASE - 1),
+    legend.key.size  = unit(8, "pt"),
+    legend.margin    = margin(0, 0, 0, 0),
+    legend.box.margin = margin(-4, 0, 0, 0),
+    legend.background = element_blank(),
+    strip.background = element_blank(),
+    strip.text       = element_text(size = IEEE_BASE - 1, face = "bold"),
+    plot.title       = element_blank(),   # IEEE titles live in the caption
+    plot.subtitle    = element_blank(),
+    plot.margin      = margin(2, 4, 2, 2)
+  )
+
+# Backward-compatible alias for scripts written against the earlier theme.
+paper_theme <- ieee_theme
 
 # Greyscale-safe palette: prints legibly in black and white.
 grey_palette <- c("grey10", "grey40", "grey62", "grey80", "black", "grey25")
@@ -50,13 +72,25 @@ grey_palette <- c("grey10", "grey40", "grey62", "grey80", "black", "grey25")
 # Point shapes that stay distinguishable without colour.
 mono_shapes <- c(21, 22, 23, 24, 25, 1)
 
-#' Save a figure as vector PDF and 600-dpi PNG, matching the existing figures.
-save_figure <- function(plot, name, width = 7.5, height = 4.3, dir = FIG_DIR) {
+#' Save a figure at IEEE specification.
+#'
+#' Writes a vector PDF (for the submission), a 600-dpi PNG (for the Word
+#' manuscript) and, when `tiff = TRUE`, a 600-dpi LZW TIFF, which is what IEEE
+#' asks for in the final package.
+#'
+#' @param width inches; defaults to the IEEE single-column measure
+save_figure <- function(plot, name, width = IEEE_1COL, height = 2.6,
+                        dir = FIG_DIR, tiff = FALSE) {
   stem <- file.path(dir, name)
-  ggsave(paste0(stem, ".pdf"), plot, width = width, height = height)
+  ggsave(paste0(stem, ".pdf"), plot, width = width, height = height,
+         device = grDevices::cairo_pdf)
   ggsave(paste0(stem, ".png"), plot, width = width, height = height,
          dpi = 600, bg = "white")
-  message("  wrote ", basename(stem), ".{pdf,png}")
+  if (tiff) {
+    ggsave(paste0(stem, ".tiff"), plot, width = width, height = height,
+           dpi = 600, bg = "white", compression = "lzw")
+  }
+  message("  wrote ", basename(stem), sprintf("  [%.2f x %.2f in]", width, height))
   invisible(stem)
 }
 
@@ -140,6 +174,43 @@ load_all_results <- function(split = "test", rule = "argmax",
   out
 }
 
+#' Test-split results with the matching validation F1 attached.
+#'
+#' Model selection must be made on the validation split and reported on the
+#' held-out split. Carrying both in one frame makes the selection auditable:
+#' `val_f1` is what the choice was made on, everything else is what is reported.
+load_with_validation <- function(rule = "argmax", include_excluded = FALSE) {
+  te <- load_all_results("test", rule, include_excluded)
+  va <- load_all_results("val",  rule, include_excluded)
+  te$val_f1 <- va$f1[match(te$config, va$config)]
+  te$val_rank <- rank(-te$val_f1, na.last = "keep", ties.method = "min")
+  te
+}
+
+#' The configuration with the highest validation F1 within a subset.
+#'
+#' @param d    frame from load_with_validation()
+#' @param rows logical index restricting the candidate set
+select_on_validation <- function(d, rows = TRUE) {
+  s <- d[rows & !is.na(d$val_f1), , drop = FALSE]
+  if (!nrow(s)) return(NULL)
+  s[which.max(s$val_f1), , drop = FALSE]
+}
+
+#' Pareto frontier over (recall maximised, deployability gap minimised).
+#'
+#' A configuration is on the frontier when no other configuration achieves both
+#' a higher recall and a lower gap. This replaces an arbitrary recall cut-off
+#' when asking which model is operationally preferable.
+pareto_frontier <- function(d) {
+  s <- d[is.finite(d$gap_x) & is.finite(d$recall), , drop = FALSE]
+  keep <- vapply(seq_len(nrow(s)), function(i) {
+    !any(s$recall >= s$recall[i] & s$gap_x <= s$gap_x[i] &
+           (s$recall > s$recall[i] | s$gap_x < s$gap_x[i]))
+  }, logical(1))
+  s[keep, , drop = FALSE][order(-s$recall[keep]), , drop = FALSE]
+}
+
 #' Read one of the pre-summarised comparison tables.
 read_result_table <- function(relpath) {
   f <- file.path(RESULTS_DIR, relpath)
@@ -176,6 +247,45 @@ pretty_backbone <- function(x) {
   list(backbone = base, mode = mode)
 }
 
+
+#' Turn a configuration directory name into a reader-facing label.
+#'
+#' Configuration names encode the experiment family in a prefix and the varied
+#' factor in a suffix: `fx_<backbone>_n<budget>` for the annotation-budget
+#' factorial, `nw_<backbone>_w<weight>` for the loss sweep, `v6_<backbone>_
+#' <mode>` for the backbone comparison and a trailing `_hn` for hard-negative
+#' fine-tuning. This renders all of them in one readable form.
+config_label <- function(x) {
+  vapply(x, function(cfg) {
+    if (identical(cfg, "geobia_otb_rf"))    return("GeoBIA, OTB segments (RF)")
+    if (identical(cfg, "geobia_oracle_rf")) return("GeoBIA, oracle segments (RF)")
+    s <- sub("^(fx|v6|nw|torch)_", "", cfg)
+    extra <- character(0)
+    if (grepl("_n[0-9]+$", s)) {
+      extra <- c(extra, paste0(sub(".*_n", "", s), " tiles"))
+      s <- sub("_n[0-9]+$", "", s)
+    }
+    if (grepl("_w[0-9.]+$", s)) {
+      extra <- c(extra, paste0("not-waste weight ", sub(".*_w", "", s)))
+      s <- sub("_w[0-9.]+$", "", s)
+    }
+    if (grepl("_hn$", s)) {
+      extra <- c(extra, "hard negatives")
+      s <- sub("_hn$", "", s)
+    }
+    pb <- pretty_backbone(s)
+    if (!is.na(pb$mode)) extra <- c(pb$mode, extra)
+    base <- pb$backbone
+    if (identical(base, "dinov2")) base <- "DINOv2 (web)"
+    if (identical(base, "dinov3satvitl")) base <- "DINOv3 ViT-L (SAT-493M)"
+    if (identical(base, "dinov3vitl")) base <- "DINOv3 ViT-L (web)"
+    if (identical(base, "satlasaerial")) base <- "SatlasPretrain (aerial)"
+    if (identical(base, "efficientnetb4imagenet")) base <- "EfficientNet-B4 (ImageNet)"
+    if (identical(base, "unet_f16_clean")) base <- "U-Net from scratch (TensorFlow)"
+    if (identical(base, "scratch")) base <- "U-Net from scratch"
+    if (!length(extra)) base else paste0(base, ", ", paste(extra, collapse = ", "))
+  }, character(1), USE.NAMES = FALSE)
+}
 
 #' Label points, using ggrepel when it is installed and geom_text otherwise.
 #' @param data data frame containing the aesthetics already mapped by the plot

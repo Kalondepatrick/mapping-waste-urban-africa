@@ -1,0 +1,19 @@
+**TABLE X**
+**Waste-Class F1 Under a Change of Scene Brightness**
+
+| Configuration | x1.00 | x0.60 | x0.75 | x0.90 | x1.10 | x1.25 | x1.50 | Worst case retained |
+| :--- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| DINOv3 ViT-L (SAT-493M), fine-tuned | 0.734 | 0.725 | 0.738 | 0.741 | 0.727 | 0.720 | 0.710 | 97% |
+| DINOv3 ViT-L (web), fine-tuned | 0.741 | 0.727 | 0.744 | 0.745 | 0.736 | 0.722 | 0.704 | 95% |
+| DINOv3 ViT-L (web), frozen | 0.734 | 0.722 | 0.732 | 0.735 | 0.731 | 0.723 | 0.702 | 96% |
+| EfficientNet-B4 (ImageNet), fine-tuned | 0.707 | 0.554 | 0.672 | 0.705 | 0.700 | 0.671 | 0.570 | 78% |
+| EfficientNet-B0 (ImageNet) | 0.682 | 0.351 | 0.593 | 0.676 | 0.675 | 0.671 | 0.568 | 51% |
+| SatlasPretrain (aerial), frozen | 0.681 | 0.378 | 0.603 | 0.670 | 0.684 | 0.681 | 0.649 | 55% |
+| SatlasPretrain (aerial), fine-tuned | 0.739 | 0.676 | 0.728 | 0.739 | 0.736 | 0.741 | 0.694 | 91% |
+| EfficientNet-B4 (ImageNet), frozen | 0.691 | 0.533 | 0.657 | 0.692 | 0.684 | 0.670 | 0.553 | 77% |
+| ResNet-34 (ImageNet) | 0.707 | 0.493 | 0.654 | 0.703 | 0.696 | 0.654 | 0.522 | 70% |
+| DINOv3 ViT-L (SAT-493M), frozen | 0.704 | 0.652 | 0.689 | 0.702 | 0.701 | 0.694 | 0.659 | 93% |
+| DINOv2 (web) | 0.678 | 0.537 | 0.657 | 0.682 | 0.674 | 0.645 | 0.569 | 79% |
+| U-Net from scratch | 0.716 | 0.319 | 0.614 | 0.711 | 0.700 | 0.658 | 0.545 | 45% |
+
+*Held-out imagery multiplied by a gain and clipped to the 8-bit range, simulating the exposure and illumination differences between flights. x1.00 is the unperturbed image. Mean of 3 seeds. Row order as in Table IX. Worst case retained is the lowest fraction of native-resolution F1 over all gains tested.*

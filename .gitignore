@@ -1,59 +1,33 @@
-# Raster data
-*.tif
-*.tiff
-
-# GDAL auxiliary files
-*.png 
-*.aux.xml
-.Rproj.user
-
-# Local OpenEarthMap environment and downloaded model weights
-.venv-openearthmap/
-data/pretrained_weights/openearthmap/*.pth
-
-# R workspace and temporary files
-.RData*
-.Rhistory
-.Rproj.user/
-
-# Python virtual environments
-.venv-openearthmap/
-.venv/
-__pycache__/
-
-# Trained deep-learning models
-*.keras
-*.h5
-*.pt
-*.pth
-
-# Generated waste mapping datasets
-/data/annotations/waste_review_app/exports/
-/data/annotations/waste_review_app/data/months/
-/data/annotations/waste_review_app/review_log.sqlite*
-/data/predictions/waste_piles_vector/
-/results/02_unet_tensorflow/shiny_waste_review/*.gpkg
-
-# Python virtual environments (additional)
-.venv-torch/
-.venv*/
-
-# Editor / IDE
-.vscode/
-
-# Zenodo staging trees built by tools/make_zenodo_package.py
-/zenodo_package/
-/zenodo_*/
-
 # ---------------------------------------------------------------------------
-# Dataset: deposited on Zenodo, not version controlled.
-# The files stay on disk; see data/README.md and tools/make_zenodo_package.py
+# Data
+#
+# The dataset is deposited on Zenodo, not version controlled. The files stay on
+# disk; see data/README.md and tools/make_zenodo_package.py
 # ---------------------------------------------------------------------------
 data/
 
-# Large derived geospatial outputs under results/.
-# Regenerate with 04_inference/ and 05_hard_negatives/, or take them from the
-# Zenodo deposit. Metrics, tables and figures ARE tracked.
+# ---------------------------------------------------------------------------
+# Imagery and large geospatial output
+#
+# Rasters are never tracked. Images are ignored by default and the manuscript
+# figures are re-included below, so a new plot in results/figures/ is committed
+# while a prediction preview written anywhere else is not.
+# ---------------------------------------------------------------------------
+*.tif
+*.tiff
+*.aux.xml
+*.png
+*.jpg
+*.jpeg
+
+# Only the numbered manuscript figures are published. Everything else under
+# results/figures/ is scratch output or superseded, and stays local.
+results/figures/**
+!results/figures/manuscript/
+!results/figures/manuscript/fig*.png
+!results/figures/manuscript/fig*.pdf
+!docs/**/*.png
+
 results/**/*.shp
 results/**/*.shx
 results/**/*.dbf
@@ -64,3 +38,59 @@ results/**/*.gpkg
 results/**/*.zip
 results/**/*.rds
 results/**/*.ipynb
+
+/data/annotations/waste_review_app/exports/
+/data/annotations/waste_review_app/data/months/
+/data/annotations/waste_review_app/review_log.sqlite*
+/data/predictions/waste_piles_vector/
+/results/02_unet_tensorflow/shiny_waste_review/*.gpkg
+
+# ---------------------------------------------------------------------------
+# Trained model weights
+#
+# Checkpoints are large and reproducible from the trainers; the ones needed to
+# reproduce the reported numbers are in the Zenodo deposit.
+# ---------------------------------------------------------------------------
+*.keras
+*.h5
+*.pt
+*.pth
+
+# ---------------------------------------------------------------------------
+# Environments and build artefacts
+# ---------------------------------------------------------------------------
+.venv*/
+__pycache__/
+*.py[cod]
+
+# ---------------------------------------------------------------------------
+# Generated documents
+#
+# docs/RESULTS.md is the source; the Word build is produced by
+# tools/build_results_docx.py and is not version controlled.
+# ---------------------------------------------------------------------------
+docs/*.docx
+~$*
+
+# ---------------------------------------------------------------------------
+# Editor and session state
+# ---------------------------------------------------------------------------
+.RData*
+.Rhistory
+.Rproj.user/
+.vscode/
+.claude/
+.DS_Store
+Thumbs.db
+
+# ---------------------------------------------------------------------------
+# Working files that are not part of the analysis
+#
+# NotNeeded/ holds superseded scripts kept for provenance. They stay on disk
+# and are listed in docs/MIGRATION_LOG.tsv, but are not published.
+# ---------------------------------------------------------------------------
+NotNeeded/
+
+# Zenodo staging trees built by tools/make_zenodo_package.py
+/zenodo_package/
+/zenodo_*/

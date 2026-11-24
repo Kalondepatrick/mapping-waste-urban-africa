@@ -1,0 +1,15 @@
+**TABLE VIII**
+**Land Cover Confused With Waste on the Held-Out Partition**
+
+| Land-cover class | Share of scene | Commission rate | Range | Share of errors | Range  |
+| :--- | ---: | ---: | ---: | ---: | ---: |
+| Natural surface, rocks | 0.54 | 18.17 | 8.13-29.27 | 10.5 | 4.1-17.7 |
+| Water body | 1.22 | 4.20 | 2.59-5.20 | 5.9 | 4.9-6.8 |
+| Soil | 22.82 | 1.68 | 1.50-2.07 | 42.6 | 37.8-48.5 |
+| Non-persistent object | 0.83 | 0.72 | 0.44-1.01 | 0.7 | 0.5-0.9 |
+| Vegetation | 51.87 | 0.58 | 0.48-0.63 | 34.2 | 33.2-35.2 |
+| Built-up surface (paved) | 3.61 | 0.42 | 0.26-0.73 | 1.6 | 1.1-2.8 |
+| Built-up surface | 13.20 | 0.24 | 0.03-0.48 | 4.0 | 0.4-9.1 |
+| Ancillary class | 2.65 | 0.20 | 0.09-0.35 | 0.6 | 0.3-1.0 |
+
+*All figures are percentages, computed on the 216 spatially clean held-out tiles with label 99 excluded, under the argmax rule. Share of scene is the fraction of assessed pixels belonging to the class. Commission rate is the fraction of that class predicted waste, and is independent of how much of the class the scene contains. Share of errors is the fraction of all false-positive pixels whose true class is the one named. Means over 4 configurations, each itself a mean over three seeds, with the range across configurations. For reference, recall on the waste class itself averages 68.0%. Rows ordered by commission rate.*

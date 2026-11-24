@@ -1,0 +1,39 @@
+device: cpu
+  216 clean held-out tiles
+  class areas (pixels):
+    1 Waste                           462,457   3.268%
+    2 Soil                          3,228,964  22.816%
+    3 Vegetation                    7,340,176  51.867%
+    4 Built-up surface              1,868,152  13.201%
+    5 Built-up surface (paved)        510,959   3.611%
+    6 Water body                      171,991   1.215%
+    7 Natural surface, rocks           76,148   0.538%
+    8 Non-persistent object           117,919   0.833%
+    9 Ancillary class                 375,149   2.651%
+24 checkpoints
+  [  1/24] torch_dinov2 s1  FP 74,601  (52.2 s/model)
+  [  2/24] torch_dinov2 s2  FP 163,363  (35.3 s/model)
+  [  3/24] torch_dinov2 s3  FP 78,724  (29.7 s/model)
+  [  4/24] torch_dinov2_hn s1  FP 15,958  (27.0 s/model)
+  [  5/24] torch_dinov2_hn s2  FP 38,152  (25.3 s/model)
+  [  6/24] torch_dinov2_hn s3  FP 90,825  (24.1 s/model)
+  [  7/24] torch_efficientnetb0 s1  FP 118,512  (22.4 s/model)
+  [  8/24] torch_efficientnetb0 s2  FP 154,163  (20.8 s/model)
+  [  9/24] torch_efficientnetb0 s3  FP 116,124  (19.5 s/model)
+  [ 10/24] torch_efficientnetb0_hn s1  FP 46,846  (18.4 s/model)
+  [ 11/24] torch_efficientnetb0_hn s2  FP 36,375  (17.6 s/model)
+  [ 12/24] torch_efficientnetb0_hn s3  FP 87,469  (16.9 s/model)
+  [ 13/24] torch_resnet34 s1  FP 132,658  (16.4 s/model)
+  [ 14/24] torch_resnet34 s2  FP 148,908  (15.9 s/model)
+  [ 15/24] torch_resnet34 s3  FP 130,460  (15.5 s/model)
+  [ 16/24] torch_resnet34_hn s1  FP 49,631  (15.2 s/model)
+  [ 17/24] torch_resnet34_hn s2  FP 19,900  (14.9 s/model)
+  [ 18/24] torch_resnet34_hn s3  FP 68,065  (14.6 s/model)
+  [ 19/24] torch_scratch s1  FP 119,742  (14.1 s/model)
+  [ 20/24] torch_scratch s2  FP 132,206  (13.6 s/model)
+  [ 21/24] torch_scratch s3  FP 145,377  (13.2 s/model)
+  [ 22/24] torch_scratch_hn s1  FP 6,508  (12.8 s/model)
+  [ 23/24] torch_scratch_hn s2  FP 7,725  (12.5 s/model)
+  [ 24/24] torch_scratch_hn s3  FP 127  (12.2 s/model)
+
+wrote C:\Users\Peter\Documents\GitHub\mapping-waste-urban-africa\results\10_landcover_confusion\landcover_confusion.csv  (216 rows, 293 s)

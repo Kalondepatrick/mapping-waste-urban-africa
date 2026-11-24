@@ -7,21 +7,28 @@ conditions pretrained and foundation models improve the generalisability of
 environmental monitoring in data-scarce settings**, using unmanaged waste piles as
 the test case.
 
-The headline result is that "data-scarce" conflates two different problems.
-Pretraining solves one of them and not the other:
+"Data-scarce" conflates three different problems. Pretraining solves one of
+them, does nothing for the second, and is decisive for the third:
 
 | axis | question | effect of pretraining |
 |---|---|---|
-| **label scarcity** | how few annotated tiles to reach accuracy *X*? | **~10× better** (DINOv3 at 64 tiles ≈ scratch U-Net at 639) |
-| **target rarity** | does the map work at deployment prevalence? | **no measurable effect** |
+| **label scarcity** | how few annotated tiles to reach accuracy *X*? | **~10× fewer** (DINOv3 at 64 tiles ≈ scratch U-Net at 639) |
+| **target rarity** | does the map work at deployment prevalence? | **none** |
+| **acquisition shift** | does it survive imagery it was not trained on? | **decisive** |
 
-Across 53 configurations (~159 training runs, 0.48 M to 304 M parameters, five
-pretraining corpora, four label budgets, frozen and fine-tuned) the
-*deployability gap* — the ratio of achieved false-positive rate to the rate needed
-for precision 0.5 at landscape prevalence — never fell below **16×**, and that
-minimum was bought by letting recall drop to 0.43. Among the ten pretrained and
-foundation backbones it ranged 26–38×.
-See [`docs/FINDINGS.md`](docs/FINDINGS.md).
+Across 54 configurations (five pretraining corpora, four label budgets, frozen
+and fine-tuned encoders) the *deployability gap* — achieved false-positive rate
+divided by the rate precision 0.5 would need at the landscape prevalence of
+0.045% — never fell below **16x** at usable recall, and the whole attainable
+recall-gap frontier lies between **11x** and **35x**.
+
+Accuracy on the survey a model was trained on does not separate these models:
+at native resolution they span 0.678 to 0.741 F1. Halve the resolution and they
+separate by a factor of thirty. The scratch U-Net retains 65% of its accuracy
+at 7.6 cm and 3% at 11.4 cm; pretrained encoders retain 90-98% and 72-87%.
+
+Results section, every number traceable to `results/`:
+[`docs/RESULTS.md`](docs/RESULTS.md). Earlier notes: [`docs/FINDINGS.md`](docs/FINDINGS.md).
 
 ---
 
@@ -45,9 +52,12 @@ See [`docs/FINDINGS.md`](docs/FINDINGS.md).
 ├── env/                     environment specifications
 ├── hpc/                     SLURM submission scripts (Sapitwa)
 ├── docs/                    findings, code map, references
-├── tools/                   Zenodo packaging, QGIS project
-└── NotNeeded/               superseded scripts, kept for provenance — see its README
+└── tools/                   Zenodo packaging, manuscript build, QGIS project
 ```
+
+Superseded scripts are kept on disk under `NotNeeded/` for provenance but are
+not published; every move is recorded in
+[`docs/MIGRATION_LOG.tsv`](docs/MIGRATION_LOG.tsv).
 
 Every script path and every data path in this repository is **relative to the
 repository root**. Run everything from the root.
@@ -106,18 +116,32 @@ The full local queue, resumable:
 
 On the cluster, `sbatch hpc/factorial/run_v6.sbatch` (see [`hpc/README.md`](hpc/README.md)).
 
-### 5. Evaluate and plot
+### 5. Evaluate, plot and build the manuscript
+
+Run in this order; each step writes into `results/` and the next reads it.
 
 ```powershell
-.venv-torch\Scripts\python.exe 06_evaluation\02_compare_models.py
+Rscript 06_evaluation\06_build_manuscript_tables.R
 ```
 
 ```powershell
-.venv-torch\Scripts\python.exe 06_evaluation\03_prevalence_decomposition.py results\03_unet_pytorch\unet_f16_clean\seed_1
+Rscript 06_evaluation\07_error_location.R
 ```
 
 ```powershell
-.venv-torch\Scripts\python.exe 07_figures\01_plot_label_budget.py
+python 06_evaluation\10_confusion_by_landcover.py; Rscript 06_evaluation\11_landcover_tables.R
+```
+
+```powershell
+python 06_evaluation\08_robustness_perturbation.py; Rscript 06_evaluation\09_robustness_tables.R
+```
+
+```powershell
+Rscript 07_figures\10_manuscript_figures.R; python 07_figures\12_qualitative_panels.py
+```
+
+```powershell
+python tools\build_results_docx.py . docs\Results.docx
 ```
 
 ---
@@ -149,16 +173,25 @@ reported. Full table in [`03_unet_pytorch/MODELS.md`](03_unet_pytorch/MODELS.md)
    `PretrainedWeightsUnavailable` rather than silently using random
    initialisation, and ViT backbones are additionally compared tensor-by-tensor
    against a fresh random initialisation to catch a silent load failure.
-2. **The test partition is spatially clean.** `--clean-test` restricts evaluation
-   to the 216 of 222 validation tiles with zero footprint overlap with any
-   development tile.
-3. **Hardware nondeterminism is material.** The same configuration and seed gives
-   F1 0.7121 / FPR 0.0095 on an RTX 4090 and 0.6992 / 0.0066 on an A100 MIG
-   slice. FPR-derived quantities are reported as ranges.
+2. **Models are selected on validation, never on held-out data.** The
+   one-standard-error rule in `06_evaluation/06_build_manuscript_tables.R` takes
+   the highest validation F1, then the lowest deployability gap among
+   configurations within one standard error of it. The selected model ranks
+   sixth of 54 on held-out F1, which is reported rather than hidden: the leading
+   six span 0.736-0.749, less than the seed-to-seed spread of any one of them.
+3. **Run-to-run variation exceeds several of the compared effects.** The scratch
+   U-Net returns 0.704, 0.730 and 0.646 across its three seeds, a range of
+   0.084 — wider than the entire spread of the leading pretrained
+   configurations. Every reported figure is a three-seed mean for that reason.
 4. **Pixel-level and object-level prevalence are never mixed.** They answer
    different questions and are computed by separate code paths
    (`03_unet_pytorch/object_metrics.py`).
-5. **Open:** all 53 configurations used RGB only, and so is everything in
+5. **Known inconsistency.** The deep-learning metrics are pooled over all 222
+   validation tiles, while the GeoBIA pixel-level evaluation uses the 216 with
+   no footprint overlap (`results/03_unet_pytorch/test_tiles_clean.csv`). The
+   difference is small — 0.693 against 0.697 F1 for the scratch U-Net — but the
+   two are not the same population and the tables will be recomputed on the 216.
+6. **Open:** all 54 configurations used RGB only, and so is everything in
    `data/`. The 1,026 28-band tiles in `data/tiled_data/multiband/` are RGB plus
    colour indices (SAVI, VARI) and Haralick texture (variance, entropy,
    dissimilarity) computed for the GeoBIA stage — all derived from the same
@@ -172,10 +205,11 @@ Eight further known issues are recorded in
 
 ## Provenance of this layout
 
-The repository was reorganised on 2026-11-23. Every move is recorded in
-`MIGRATION_LOG.tsv` (`source → destination → whether git tracked the rename`), so
-any historical path can be resolved. Nothing was deleted: superseded code lives
-in `NotNeeded/` with an explanation per group.
+The repository was reorganised on 2026-11-23 and tidied on 2026-11-24. Every
+move is recorded in [`docs/MIGRATION_LOG.tsv`](docs/MIGRATION_LOG.tsv)
+(`source -> destination -> whether git tracked the rename`), so any historical
+path can be resolved. Nothing was deleted; superseded code remains on disk in
+`NotNeeded/`, which is no longer published.
 
 ## Licence and citation
 
